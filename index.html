@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#EA580C" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="岡山關西旅" />
+  <title>2027 岡山・四國・關西親子之旅 (6/26-7/4)</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- 頂部旅遊主視覺橫幅 -->
+    <header class="hero-header">
+      <div class="hero-top-row">
+        <span class="trip-badge">🍑 2027.06.26 – 07.04 (9天8夜)</span>
+        <span class="countdown-badge" id="countdownBadge">⏳ 載入中...</span>
+      </div>
+      <h1 class="hero-title">日本岡山進・關西出親子旅</h1>
+      <p class="hero-subtitle">
+        <span>👨‍👩‍👧‍👦 2大3小</span>
+        <span>•</span>
+        <span>✈️ IT214 進 / CI153 出</span>
+        <span>•</span>
+        <span>🎫 關西廣域周遊券</span>
+      </p>
+    </header>
+
+    <!-- Day 1 ~ Day 9 橫向選擇器 (底下綠線代表使用 JR 周遊券日) -->
+    <div class="day-selector-wrap" id="daySelectorWrap">
+      <div class="day-selector" id="daySelector"></div>
+    </div>
+
+    <!-- 主內容區 -->
+    <main class="main-container" id="mainContainer"></main>
+
+    <!-- 底部導航列 -->
+    <nav class="bottom-nav">
+      <button class="nav-tab active" data-tab="itinerary" onclick="switchTab('itinerary')">
+        <span class="nav-icon">🗓️</span>
+        <span>每日行程</span>
+      </button>
+      <button class="nav-tab" data-tab="pass" onclick="switchTab('pass')">
+        <span class="nav-icon">🎫</span>
+        <span>交通票券</span>
+      </button>
+      <button class="nav-tab" data-tab="flightHotel" onclick="switchTab('flightHotel')">
+        <span class="nav-icon">🏨</span>
+        <span>航班住宿</span>
+      </button>
+      <button class="nav-tab" data-tab="checklist" onclick="switchTab('checklist')">
+        <span class="nav-icon">✅</span>
+        <span>行前清單</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 新增自訂行程 Modal -->
+  <div class="modal-backdrop" id="addEventModal">
+    <div class="modal-box">
+      <h3>📌 新增當日行程 / 餐廳</h3>
+      <div class="form-group">
+        <label>時間 / 時段</label>
+        <input type="text" id="evtTime" placeholder="例如：12:30 或 晚餐" />
+      </div>
+      <div class="form-group">
+        <label>行程或餐廳名稱 *</label>
+        <input type="text" id="evtTitle" placeholder="例如：味司野村 豬排丼" />
+      </div>
+      <div class="form-group">
+        <label>活動說明 / 備註</label>
+        <textarea id="evtDesc" rows="2" placeholder="例如：必點多蜜醬汁豬排丼＋兒童餐"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Google 地圖搜尋關鍵字（選填）</label>
+        <input type="text" id="evtMap" placeholder="留空則直接使用標題導航" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeAddEventModal()">取消</button>
+        <button class="btn-primary" onclick="saveNewEvent()">儲存新增</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
