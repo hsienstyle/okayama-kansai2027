@@ -1,6 +1,6 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 
-const STORAGE_KEY = "okayama_kansai_2027_v3";
+const STORAGE_KEY = "okayama_kansai_2027_v4";
 
 const defaultTripData = {
   selectedDay: 1,
@@ -16,39 +16,49 @@ const defaultTripData = {
       date: "6/26 (六)",
       fullDate: "2027-06-26",
       city: "岡山",
-      title: "航班抵達與市區採買",
+      title: "航班抵達、出關接駁與市區採買",
       passBadge: "🚌 機場利木津巴士（現場購票/刷卡）",
       passType: "bus",
-      transportSummary: "自岡山機場搭乘利木津巴士直達 JR 岡山車站（約 30 分鐘，現場購票或刷卡）。",
+      transportSummary: "IT 214 (11:30 桃園 T1 起飛 ➔ 15:05 抵達岡山)。預計 15:50~16:10 出關搭利木津巴士（約 30 分鐘）直達 JR 岡山站。",
       hotelArea: "岡山車站周邊 (第 1/3 晚)",
-      notes: "抵達 JR 岡山站後，建議先在綠色窗口兌換隔天要用的「JR 關西廣域周遊券」及領取 Day 3 麵包超人小火車指定席券！",
+      notes: "抵達 JR 岡山站約 16:40，建議一人帶孩子先去飯店 Check-in，一人去岡山站綠色窗口兌換「JR 關西廣域周遊券」及領取 Day 3 麵包超人小火車指定席券！",
       items: [
         {
+          id: "d1-0",
+          time: "09:00 – 11:30",
+          category: "🛫 桃園出發",
+          title: "桃園機場第一航廈 (T1) 報到 ➔ 11:30 搭乘 IT 214 起飛",
+          desc: "建議 09:00 抵達桃園機場第一航廈台灣虎航櫃檯辦理託運（起飛前 2.5 小時）。11:30 準時起飛前往日本岡山（飛行時間約 2 小時 35 分）。",
+          highlight: "✈️ 航班：台灣虎航 IT 214｜11:30 TPE (T1) ➔ 15:05 OKJ",
+          mapQuery: "Taoyuan International Airport Terminal 1",
+          done: false
+        },
+        {
           id: "d1-1",
-          time: "下午",
-          category: "✈️ 航班抵達",
-          title: "搭乘台灣虎航 IT 214 抵達岡山桃太郎機場",
-          desc: "辦理入境手續、領取行李。岡山機場規模小巧，通關動線單純，出關後左手邊即可搭乘接駁巴士。",
-          highlight: "💡 記得提前填妥 Visit Japan Web (VJW) 加速全家人通關！",
+          time: "15:05 – 16:00",
+          category: "🛬 抵達與出關",
+          title: "15:05 抵達岡山桃太郎機場 & 入境通關（預計約 45~55 分鐘）",
+          desc: "岡山機場規模小巧、國際線同時間僅一班飛機，但因全機旅客同時排隊審查，2大3小加上領行李預計約 15:50 ～ 16:05 完成出關。",
+          highlight: "💡 出發前填妥 Visit Japan Web (VJW) 並截圖 QR Code，下機走快步可大幅縮短排隊時間！",
           mapQuery: "Okayama Momotaro Airport",
           done: false
         },
         {
           id: "d1-2",
-          time: "傍晚",
+          time: "16:10 – 16:40",
           category: "🚌 機場交通",
-          title: "搭乘利木津巴士直達 JR 岡山車站",
-          desc: "巴士配合航班時間發車，直達岡山站西口巴士中心。抵達後先前往岡山車站周邊飯店辦理 Check-in 放行李。",
-          highlight: "🎫 現場售票機購票或直接感應交通卡/信用卡",
+          title: "搭乘利木津巴士直達 JR 岡山車站（車程約 30 分鐘）",
+          desc: "出關大廳左轉出門就是「2號乘車處（往岡山站西口）」。巴士會配合 IT 214 航班加開臨時加班車（客滿即發車，約 15:55、16:10 陸續發車），約 16:40 抵達岡山站西口，前往飯店 Check-in。",
+          highlight: "🎫 成人 ¥780 / 兒童 ¥390，可現場售票機買票或直接刷 ICOCA / 感應信用卡",
           mapQuery: "JR Okayama Station",
           done: false
         },
         {
           id: "d1-3",
-          time: "晚上",
+          time: "17:30 – 20:30",
           category: "🛍️ 用餐與採買",
-          title: "岡山車站共構商場 / AEON MALL 岡山",
-          desc: "於車站地下街一番街或連通道直達的 AEON MALL 岡山享用晚餐，順便採買未來幾天的兒童零食、水果（岡山白桃季初登場！）與日用品。",
+          title: "岡山車站共構商場 / AEON MALL 岡山晚餐與採買",
+          desc: "放好行李、換好 JR 周遊券後，經由地下連通道步行 5 分鐘直達 AEON MALL 岡山享用晚餐，順便在 1F 超市採買兒童零食、牛奶、岡山白桃與日用品。",
           highlight: "🍑 AEON 1樓超市與 6-7樓餐廳街選擇非常豐富，推車友善！",
           mapQuery: "AEON MALL Okayama",
           done: false
@@ -463,40 +473,40 @@ const defaultTripData = {
       date: "7/4 (日)",
       fullDate: "2027-07-04",
       city: "關西機場 ➔ 返台",
-      title: "整理行李、直達關西機場搭機返台",
+      title: "整理行李、直達關西機場搭 JX 823 返台",
       passBadge: "🚆 機場直達車（南海電鐵 / JR Haruka）",
       passType: "bus",
-      transportSummary: "上午整理行李退房，自「新今宮站」搭乘南海電鐵（空港急行或 Rapi:t 特急）或 JR 關空快速/Haruka 直達「關西國際機場 (KIX)」，搭乘星宇航空 JX 823 返台。",
+      transportSummary: "JX 823 (15:10 關西 T1 起飛 ➔ 約 17:15 抵達桃園 T1)。建議 10:30~11:00 從新今宮搭直達車，約 11:45~12:10 抵達關西機場。",
       hotelArea: "溫暖的家 🏠",
-      notes: "新今宮站有南海電鐵與 JR 兩條路線都能直達關西機場！建議於 JX 823 起飛前 2.5 ~ 3 小時抵達關西機場第一航廈 (T1)。",
+      notes: "星宇 JX 823 為下午 15:10 起飛！早上不用趕早起，可以睡飽吃完早餐，10:30 退房去新今宮站搭車時間非常充裕！",
       items: [
         {
           id: "d9-1",
-          time: "上午",
-          category: "🧳 退房出發",
-          title: "飯店整理行李退房 ➔ 新今宮站搭直達車往關西機場",
-          desc: "從新今宮站搭乘「南海電鐵（Rapi:t 特急約 36 分鐘 / 空港急行約 42 分鐘）」或「JR 關空快速/Haruka」直達關西國際機場，完全免轉車！",
-          highlight: "🚆 新今宮住處最大優勢：推著大行李一班車直達機場航廈",
+          time: "10:30 – 11:45",
+          category: "🧳 退房與機場電車",
+          title: "新今宮飯店退房 ➔ 搭南海電鐵或 JR 直達關西國際機場",
+          desc: "10:30 辦理退房後步行至新今宮站，搭乘「南海電鐵（Rapi:t 特急 36 分鐘 / 空港急行 42 分鐘）」或「JR 關空快速/Haruka」一班車直達關西機場車站（約 11:30~11:50 抵達）。",
+          highlight: "🚆 建議搭乘 10:45 ~ 11:15 之間的班次，12:00 前抵達機場最從容！",
           mapQuery: "Kansai International Airport",
           done: false
         },
         {
           id: "d9-2",
-          time: "中午",
-          category: "✈️ 報到與免稅店",
-          title: "關西國際機場第一航廈 (T1) 辦理登機與免稅採買",
-          desc: "於星宇航空櫃檯辦理行李託運與領取登機證。通關後全新改裝的 KIX 大型步入式免稅店可以做最後衝刺（白色戀人、呼吸巧克力、京都抹茶甜點等）。",
-          highlight: "🛍️ 關西機場 T1 改裝後免稅店動線寬敞，也可使用線上預訂取貨",
+          time: "12:00 – 14:30",
+          category: "✈️ 報到、出境與免稅店",
+          title: "關西機場第一航廈 (T1) 報到託運 & 免稅店最後採買",
+          desc: "於起飛前 3 小時（約 12:10）至星宇航空櫃檯辦理行李託運。關西機場隨身行李安檢與出境審查建議預留 40~50 分鐘，通關後在全新改裝的 KIX 免稅店享用午餐與採買伴手禮。",
+          highlight: "🛍️ 預計 13:15 前完成出境審查，還有整整 1 小時可以悠閒逛免稅店！",
           mapQuery: "Kansai International Airport Terminal 1",
           done: false
         },
         {
           id: "d9-3",
-          time: "下午",
+          time: "15:10 – 17:15",
           category: "🛫 平安返台",
-          title: "搭乘星宇航空 JX 823 航班返回台灣",
-          desc: "帶著滿滿 9 天 8 夜岡山、四國與關西的親子美好回憶與戰利品，享受星宇機上娛樂與胡同燒肉機上餐，平安飛抵台灣！",
-          highlight: "🎉 2027 岡山進・關西出親子大冒險圓滿成功！",
+          title: "15:10 搭乘星宇航空 JX 823 起飛 ➔ 約 17:15 抵達桃園機場",
+          desc: "14:30 前往登機門準備登機，15:10 準時起飛（飛行時間約 3 小時）。預計台灣時間 17:05～17:20 抵達桃園國際機場第一航廈 (T1)，領行李出關約 18:00～18:15。",
+          highlight: "✈️ 航班：星宇航空 JX 823｜15:10 KIX (T1) ➔ 17:15 TPE (T1)",
           mapQuery: "Taoyuan International Airport",
           done: false
         }
@@ -854,13 +864,17 @@ function renderPassView() {
 function renderFlightHotelView() {
   return `
     <div class="section-card">
-      <h3>✈️ 航班資訊（岡山進・關西出）</h3>
+      <h3>✈️ 航班確切時間與出關預估</h3>
       <div class="info-box transport-bus" style="margin-bottom:10px;">
         <span class="info-box-icon">🛫</span>
         <div class="info-box-content">
           <span class="info-box-label">去程：2027/6/26 (六) Day 1</span>
-          <div><strong>台灣虎航 IT 214</strong>（桃園 TPE ➔ 岡山 OKJ）</div>
-          <div style="font-size:0.8rem;opacity:0.85;margin-top:2px;">抵達後搭乘岡山機場利木津巴士直達 JR 岡山站西口</div>
+          <div><strong>台灣虎航 IT 214</strong>｜桃園 T1 (<strong>11:30</strong>) ➔ 岡山 OKJ (<strong>15:05</strong>)</div>
+          <div style="font-size:0.8rem;opacity:0.9;margin-top:4px;line-height:1.5;">
+            • <strong>建議到場：</strong>09:00 抵達桃園機場第一航廈報到<br>
+            • <strong>預計出關：</strong>約 <strong>15:50 ～ 16:05</strong> 完成入境與領行李<br>
+            • <strong>市區接駁：</strong>搭 16:00~16:15 利木津巴士（配合航班加開），約 <strong>16:40</strong> 抵達 JR 岡山站西口
+          </div>
         </div>
       </div>
 
@@ -868,8 +882,12 @@ function renderFlightHotelView() {
         <span class="info-box-icon">🛬</span>
         <div class="info-box-content">
           <span class="info-box-label">回程：2027/7/4 (日) Day 9</span>
-          <div><strong>星宇航空 JX 823</strong>（關西 KIX ➔ 桃園 TPE）</div>
-          <div style="font-size:0.8rem;opacity:0.85;margin-top:2px;">自新今宮站搭乘直達列車前往關西國際機場第一航廈 (T1)</div>
+          <div><strong>星宇航空 JX 823</strong>｜關西 T1 (<strong>15:10</strong>) ➔ 桃園 T1 (<strong>17:15</strong>)</div>
+          <div style="font-size:0.8rem;opacity:0.9;margin-top:4px;line-height:1.5;">
+            • <strong>退房搭車：</strong>10:30 退房，自新今宮搭直達車，約 <strong>11:45 ～ 12:10</strong> 抵達關西機場 T1<br>
+            • <strong>報到出境：</strong>12:10 報到託運，預計 <strong>13:15</strong> 前完成安檢與出境審查（留 1 小時逛免稅店）<br>
+            • <strong>返抵台灣：</strong>17:15 降落桃園 T1，預計 <strong>18:00 ～ 18:15</strong> 領完行李出關
+          </div>
         </div>
       </div>
     </div>
