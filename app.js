@@ -1,6 +1,6 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 
-const STORAGE_KEY = "okayama_kansai_2027_v2";
+const STORAGE_KEY = "okayama_kansai_2027_v3";
 
 const defaultTripData = {
   selectedDay: 1,
@@ -409,12 +409,12 @@ const defaultTripData = {
       date: "7/3 (六)",
       fullDate: "2027-07-03",
       city: "京都 ➔ 大阪",
-      title: "京都鐵道博物館與新世界串炸之夜",
-      passBadge: "💳 ICOCA 刷卡日（JR 京都線＋新世界）",
+      title: "京都鐵道博物館、鴨川散步與新世界串炸",
+      passBadge: "💳 ICOCA 刷卡日（JR / 阪急或京阪電車）",
       passType: "icoca",
-      transportSummary: "自新今宮搭 JR 至「大阪站」，轉乘 JR 京都線新快速至「京都站」，再轉乘 JR 嵯峨野線 1 站至「梅小路京都西站」出站即達。",
+      transportSummary: "去程：自新今宮搭 JR 至大阪轉京都線至「梅小路京都西站」。回程：自鴨川旁（京都河原町站）搭阪急電車直通大阪地鐵堺筋線，直達通天閣/新今宮！",
       hotelArea: "大阪新今宮周邊 (第 5/5 晚)",
-      notes: "想體驗京都鐵道博物館的「駕駛模擬器」，記得先下載官方抽選 App 並在入館後立刻登記抽選，同時先買 SL 蒸汽火車乘車券！",
+      notes: "想體驗京都鐵道博物館的「駕駛模擬器」，記得先下載官方抽選 App 並在入館後立刻登記抽選，同時先買 SL 蒸汽火車乘車券！下午去鴨川建議帶條小毛巾讓孩子踩水。",
       items: [
         {
           id: "d8-1",
@@ -428,7 +428,7 @@ const defaultTripData = {
         },
         {
           id: "d8-2",
-          time: "上午～午後",
+          time: "上午～中午",
           category: "🚂 鐵道聖地",
           title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、模擬器",
           desc: "鐵道迷終極聖地！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，還能在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
@@ -439,9 +439,19 @@ const defaultTripData = {
         {
           id: "d8-3",
           time: "下午",
+          category: "🐢 河岸散策",
+          title: "京都鴨川散步 & 跳烏龜石（三條～四條河原町 / 鴨川三角洲）",
+          desc: "從梅小路搭公車或計程車前往鴨川河畔！可以在「鴨川三角洲（出町柳）」或「三條大橋～四條大橋」沿著清澈河岸散步、帶 3 小踩水跳烏龜石（飛び石）、看夏季特有的鴨川納涼床與水鳥，順便在河原町享用京都抹茶甜點下午茶。",
+          highlight: "🚇 返程超順秘技：逛完直接從四條鴨川旁的「阪急京都河原町站」搭車（往天下茶屋方向直通堺筋線），免走回京都站即可直達通天閣（惠美須町站）／新今宮（動物園前站）！",
+          mapQuery: "Kamogawa River Kyoto",
+          done: false
+        },
+        {
+          id: "d8-4",
+          time: "傍晚～晚上",
           category: "🗼 最後採買與美食",
           title: "返回大阪新今宮：通天閣 / 新世界商圈 & 串炸晚餐",
-          desc: "下午搭 JR 返回新今宮站，步行即可進入充滿昭和復古霓虹風情的「新世界商店街」與地標「通天閣」。晚餐大啖現炸酥脆的大阪名物「串炸（串カツだるま 元祖串炸達摩等）」，順便去 MEGA 唐吉訶德新世界店做最後伴手禮採買！",
+          desc: "傍晚抵達新世界商店街與地標「通天閣」。晚餐大啖現炸酥脆的大阪名物「串炸（串カツだるま 元祖串炸達摩等）」，順便去 MEGA 唐吉訶德新世界店做最後伴手禮採買！",
           highlight: "🛒 MEGA 唐吉訶德新世界店就在新今宮站旁，買完直接提回飯店打包超方便！",
           mapQuery: "Tsutenkaku",
           done: false
@@ -834,7 +844,7 @@ function renderPassView() {
       <h3>🟣 Day 7 ~ Day 9：ICOCA 與關西機場交通</h3>
       <ul style="font-size:0.86rem;padding-left:18px;margin:0;line-height:1.7;">
         <li><strong>Day 7 (大阪市區)：</strong>刷 ICOCA 搭乘 Osaka Metro 地鐵（往大阪港海遊館，或堺筋線直達扇町站 Kids Plaza）。</li>
-        <li><strong>Day 8 (京都鐵道博物館)：</strong>刷 ICOCA 搭 JR（新今宮 ➔ 大阪 ➔ 京都 ➔ 梅小路京都西站）。</li>
+        <li><strong>Day 8 (京都鐵道博物館＋鴨川)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；下午逛完鴨川後，直接從四條鴨川旁的<strong>「阪急京都河原町站」</strong>搭車（直通大阪地鐵堺筋線），免回京都車站就能直達通天閣（惠美須町站）／新今宮（動物園前站）！</li>
         <li><strong>Day 9 (新今宮 ➔ 關西機場)：</strong>新今宮站可選擇搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>直達關西機場第一航廈。</li>
       </ul>
     </div>
