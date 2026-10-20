@@ -1,6 +1,6 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 
-const STORAGE_KEY = "okayama_kansai_2027_v1";
+const STORAGE_KEY = "okayama_kansai_2027_v2";
 
 const defaultTripData = {
   selectedDay: 1,
@@ -456,9 +456,9 @@ const defaultTripData = {
       title: "整理行李、直達關西機場搭機返台",
       passBadge: "🚆 機場直達車（南海電鐵 / JR Haruka）",
       passType: "bus",
-      transportSummary: "上午整理行李退房，自「新今宮站」搭乘南海電鐵（空港急行或 Rapi:t 特急）或 JR 關空快速/Haruka 直達「關西國際機場 (KIX)」，搭乘中華航空 CI 153 返台。",
+      transportSummary: "上午整理行李退房，自「新今宮站」搭乘南海電鐵（空港急行或 Rapi:t 特急）或 JR 關空快速/Haruka 直達「關西國際機場 (KIX)」，搭乘星宇航空 JX 823 返台。",
       hotelArea: "溫暖的家 🏠",
-      notes: "新今宮站有南海電鐵與 JR 兩條路線都能直達關西機場！建議於 CI 153 起飛前 2.5 ~ 3 小時抵達關西機場第一航廈 (T1)。",
+      notes: "新今宮站有南海電鐵與 JR 兩條路線都能直達關西機場！建議於 JX 823 起飛前 2.5 ~ 3 小時抵達關西機場第一航廈 (T1)。",
       items: [
         {
           id: "d9-1",
@@ -475,7 +475,7 @@ const defaultTripData = {
           time: "中午",
           category: "✈️ 報到與免稅店",
           title: "關西國際機場第一航廈 (T1) 辦理登機與免稅採買",
-          desc: "於中華航空櫃檯辦理行李託運與領取登機證。通關後全新改裝的 KIX 大型步入式免稅店可以做最後衝刺（白色戀人、呼吸巧克力、京都抹茶甜點等）。",
+          desc: "於星宇航空櫃檯辦理行李託運與領取登機證。通關後全新改裝的 KIX 大型步入式免稅店可以做最後衝刺（白色戀人、呼吸巧克力、京都抹茶甜點等）。",
           highlight: "🛍️ 關西機場 T1 改裝後免稅店動線寬敞，也可使用線上預訂取貨",
           mapQuery: "Kansai International Airport Terminal 1",
           done: false
@@ -484,8 +484,8 @@ const defaultTripData = {
           id: "d9-3",
           time: "下午",
           category: "🛫 平安返台",
-          title: "搭乘中華航空 CI 153 航班返回台灣",
-          desc: "帶著滿滿 9 天 8 夜岡山、四國與關西的親子美好回憶與戰利品，平安飛抵台灣！",
+          title: "搭乘星宇航空 JX 823 航班返回台灣",
+          desc: "帶著滿滿 9 天 8 夜岡山、四國與關西的親子美好回憶與戰利品，享受星宇機上娛樂與胡同燒肉機上餐，平安飛抵台灣！",
           highlight: "🎉 2027 岡山進・關西出親子大冒險圓滿成功！",
           mapQuery: "Taoyuan International Airport",
           done: false
@@ -495,7 +495,7 @@ const defaultTripData = {
   ],
   checklist: [
     { id: "c1", text: "護照效期確認（2大3小，需滿 6 個月以上）", done: false },
-    { id: "c2", text: "台灣虎航 IT 214 (去程) & 華航 CI 153 (回程) 電子機票確認", done: false },
+    { id: "c2", text: "台灣虎航 IT 214 (去程) & 星宇航空 JX 823 (回程) 電子機票確認", done: false },
     { id: "c3", text: "購買「JR 關西廣域周遊券 5日券」(6/27~7/1 使用)", done: false },
     { id: "c4", text: "預訂 6/28「瀨戶大橋麵包超人小火車 1號 (11:17)」綠色車廂指定席券", done: false },
     { id: "c5", text: "預約 6/28「中野烏龍麵學校（琴平校）」(3小體驗＋2大陪同)", done: false },
@@ -858,7 +858,7 @@ function renderFlightHotelView() {
         <span class="info-box-icon">🛬</span>
         <div class="info-box-content">
           <span class="info-box-label">回程：2027/7/4 (日) Day 9</span>
-          <div><strong>中華航空 CI 153</strong>（關西 KIX ➔ 桃園 TPE）</div>
+          <div><strong>星宇航空 JX 823</strong>（關西 KIX ➔ 桃園 TPE）</div>
           <div style="font-size:0.8rem;opacity:0.85;margin-top:2px;">自新今宮站搭乘直達列車前往關西國際機場第一航廈 (T1)</div>
         </div>
       </div>
