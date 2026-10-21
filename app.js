@@ -1,6 +1,6 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 
-const STORAGE_KEY = "okayama_kansai_2027_v5";
+const STORAGE_KEY = "okayama_kansai_2027_v6";
 
 const defaultTripData = {
   selectedDay: 1,
@@ -346,38 +346,54 @@ const defaultTripData = {
       passType: "icoca",
       transportSummary: "今日起 JR 周遊券已結束，全程使用 ICOCA 交通卡刷卡搭乘大阪地鐵 (Osaka Metro) 前往目的地。",
       hotelArea: "大阪新今宮周邊 (第 4/5 晚)",
-      notes: "可依當天天氣與孩子體力，在下方一鍵切換「選項 A：海遊館」或「選項 B：Kids Plaza 兒童樂園」！",
+      notes: "可依當天天氣與孩子體力，在下方一鍵切換「選項 A：海遊館＋大阪城公園溜滑梯＋心齋橋道頓堀」或「選項 B：Kids Plaza 室內兒童樂園」！",
       hasOptions: true,
+      optionKey: "day7Option",
+      optionTitle: "🔀 Day 7 二擇一彈性方案切換（點擊切換當日行程）：",
+      optionLabels: {
+        A: "🦈 選項 A：海遊館＋大阪城溜滑梯＋心齋橋",
+        B: "🧗 選項 B：Kids Plaza 室內兒童樂園"
+      },
       optionsData: {
         A: [
           {
             id: "d7-a1",
-            time: "09:30",
+            time: "09:15",
             category: "🚇 地鐵移動 (選項 A)",
-            title: "新今宮（動物園前站 / 難波轉）➔ 大阪港站",
-            desc: "全程刷 ICOCA 搭乘大阪地鐵前往中央線「大阪港站」，步行約 5-8 分鐘抵達天保山海遊館。",
-            highlight: "💳 今日起使用 ICOCA 感應進站",
+            title: "新今宮（動物園前站）➔ 本町轉中央線 ➔ 大阪港站",
+            desc: "全程刷 ICOCA 搭乘大阪地鐵前往中央線「大阪港站」，步行約 5-8 分鐘直達海遊館。",
+            highlight: "💳 今日起全程使用 ICOCA 感應進站",
             mapQuery: "Osakako Station",
             done: false
           },
           {
             id: "d7-a2",
-            time: "上午～下午",
+            time: "09:45 – 12:30",
             category: "🦈 選項 A：水族館",
             title: "大阪海遊館（看巨大鯨鯊與環太平洋海洋生物）",
-            desc: "全球最大級室內水族館！搭手扶梯直達 8 樓森林區，再沿著螺旋坡道一路往下繞行巨大的「太平洋水槽」，從不同深度近距離觀賞大鯨鯊、鬼蝠魟、企鵝與海豹。",
+            desc: "全球最大級室內水族館！搭手扶梯直達 8 樓森林區，再沿著螺旋坡道一路往下繞行巨大的「太平洋水槽」，從不同深度近距離觀賞大鯨鯊、鬼蝠魟、企鵝與海豹。看完直接去搭地鐵（不逛天保山商場）！",
             highlight: "♿ 全館螺旋斜坡設計，完全不用扛樓梯，非常適合親子慢遊！",
             mapQuery: "Osaka Aquarium Kaiyukan",
             done: false
           },
           {
             id: "d7-a3",
-            time: "下午",
-            category: "🎡 選項 A：摩天輪與午餐",
-            title: "天保山 Marketplace 用餐 & 天保山大摩天輪",
-            desc: "在海遊館旁的天保山商場享用大阪美食（內有浪花美食橫丁復古街），隨後搭乘高達 112.5 公尺的「天保山大摩天輪」俯瞰大阪灣與明石海峽大橋（有透明車廂可選）。",
-            highlight: "🎡 亦可順遊旁邊的樂高樂園探索中心或搭聖瑪麗亞號帆船",
-            mapQuery: "Tempozan Giant Ferris Wheel",
+            time: "12:50 – 15:30",
+            category: "🛝 選項 A：午餐與放電",
+            title: "大阪城公園（森之宮站）：R Baker 麵包坊/星巴克餐廳區 & 兒童大型滾輪溜滑梯",
+            desc: "從「大阪港站」搭地鐵中央線【一班車免轉車 16 分鐘】直達「森之宮站」！3B 出口一出來就是噴水廣場時尚餐廳區（有 R Baker 現烤麵包咖啡廳、星巴克與親子餐廳），吃飽旁邊就是超大型兒童複合遊具與滾輪溜滑梯遊樂場，讓 3 小盡情放電！",
+            highlight: "🚇 大阪港 ➔ 森之宮 地鐵中央線一班車直達，出站即達餐廳與溜滑梯，完全不用走遠路！",
+            mapQuery: "Moriguchi Fountain Plaza Osaka Castle Park",
+            done: false
+          },
+          {
+            id: "d7-a4",
+            time: "16:00 – 20:00",
+            category: "🏃‍♂️ 選項 A：商圈逛街與晚餐",
+            title: "心齋橋 & 道頓堀商圈（大丸寶可夢中心、固力果跑跑人、章魚燒晚餐）",
+            desc: "從「森之宮站」搭地鐵長堀鶴見綠地線【一班車免轉車 9 分鐘】直達「心齋橋站」！先逛大丸心齋橋店本館 9F（寶可夢中心 DX、Jump Shop），再散步至道頓堀與「固力果跑跑人」拍全家福、享用晚餐。最後從難波站搭御堂筋線 1 站即回新今宮飯店！",
+            highlight: "🚇 森之宮 ➔ 心齋橋 ➔ 難波 ➔ 動物園前（新今宮），段段一班車直達超輕鬆！",
+            mapQuery: "Dotonbori Glico Sign",
             done: false
           }
         ],
@@ -918,7 +934,7 @@ function renderPassView() {
     <div class="section-card">
       <h3>🟣 Day 7 ~ Day 9：ICOCA 與關西機場交通</h3>
       <ul style="font-size:0.86rem;padding-left:18px;margin:0;line-height:1.7;">
-        <li><strong>Day 7 (大阪市區)：</strong>刷 ICOCA 搭乘 Osaka Metro 地鐵（往大阪港海遊館，或堺筋線直達扇町站 Kids Plaza）。</li>
+        <li><strong>Day 7 (大阪市區)：</strong>刷 ICOCA 搭乘 Osaka Metro 地鐵（選項 A：大阪港海遊館 ➔ 中央線直達森之宮站「大阪城公園溜滑梯/餐廳」 ➔ 長堀鶴見綠地線直達「心齋橋/道頓堀」；選項 B：堺筋線直達扇町站 Kids Plaza）。</li>
         <li><strong>Day 8 (京都鐵道博物館＋鴨川＋晚餐二擇一)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；傍晚若選<strong>「選項 A：阿倍野 Q's Mall」</strong>可搭京阪或 JR 至天王寺站（距新今宮僅 1 站）；若選<strong>「選項 B：留在京都晚餐」</strong>，可在四條河原町或京都車站吃飽買齊伴手禮後再搭車回新今宮！</li>
         <li><strong>Day 9 (新今宮 ➔ 關西機場)：</strong>新今宮站可選擇搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>直達關西機場第一航廈。</li>
       </ul>
