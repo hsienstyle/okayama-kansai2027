@@ -1,6 +1,6 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 
-const STORAGE_KEY = "okayama_kansai_2027_v6";
+const STORAGE_KEY = "okayama_kansai_2027_v7";
 
 const defaultTripData = {
   selectedDay: 1,
@@ -410,22 +410,32 @@ const defaultTripData = {
           },
           {
             id: "d7-b2",
-            time: "上午～下午",
+            time: "10:00 – 14:00",
             category: "🧗 選項 B：室內放電",
             title: "大阪兒童樂園 (Kids Plaza Osaka) 科學互動與攀爬",
             desc: "日本第一座專為兒童打造的博物館！由奧地利建築師百水先生設計的魔幻「兒童城堡」立體迷宮與溜滑梯、超大泡泡體驗、科學互動實驗、以及超市收銀/郵差/章魚燒老闆職業體驗。",
-            highlight: "🎫 憑當日票券可中途出館到樓下吃午餐再進場繼續玩！旁有扇町公園超長溜滑梯",
+            highlight: "🎫 憑當日票券可中途出館到旁邊吃午餐再進場繼續玩！旁有扇町公園超長溜滑梯",
             mapQuery: "Kids Plaza Osaka",
             done: false
           },
           {
             id: "d7-b3",
-            time: "下午",
+            time: "14:00 – 15:45",
             category: "🥞 選項 B：商店街散策",
             title: "天神橋筋商店街（日本最長商店街）覓食逛街",
-            desc: "緊鄰 Kids Plaza 的就是全長 2.6 公里的天神橋筋商店街，有頂棚遮陽避雨，可以邊走邊吃中村屋可樂餅、鯛魚燒、大阪燒與逛百元藥妝店。",
-            highlight: "😋 在地人日常商店街，物價親民又好吃",
+            desc: "緊鄰 Kids Plaza 的就是全長 2.6 公里的天神橋筋商店街，有頂棚遮陽避雨，可以邊走邊吃中村屋可樂餅、鳴門鯛魚燒、章魚燒與逛百元藥妝店。",
+            highlight: "😋 在地人日常商店街，物價親民又好逛",
             mapQuery: "Tenjinbashisuji Shopping Street",
+            done: false
+          },
+          {
+            id: "d7-b4",
+            time: "16:00 – 20:00",
+            category: "🏃‍♂️ 選項 B：商圈逛街與晚餐",
+            title: "心齋橋 & 道頓堀商圈（大丸寶可夢中心、固力果跑跑人、章魚燒晚餐）",
+            desc: "從「扇町站」搭地鐵堺筋線僅 4 站（約 6 分鐘）至「長堀橋站」，走地下街 5 分鐘即達心齋橋！先衝大丸心齋橋店本館 9F（寶可夢中心 DX、Jump Shop），再一路逛到道頓堀跟「固力果跑跑人」拍全家福並享用晚餐。最後從難波站搭御堂筋線 1 站即回新今宮飯店！",
+            highlight: "⚡ 不論選 A 或 B，傍晚都能逛到寶可夢中心與道頓堀跑跑人！",
+            mapQuery: "Dotonbori Glico Sign",
             done: false
           }
         ]
