@@ -1,11 +1,12 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 
-const STORAGE_KEY = "okayama_kansai_2027_v4";
+const STORAGE_KEY = "okayama_kansai_2027_v5";
 
 const defaultTripData = {
   selectedDay: 1,
   activeTab: "itinerary", // itinerary | pass | flightHotel | checklist
   day7Option: "A", // A: 海遊館 | B: Kids Plaza
+  day8Option: "A", // A: 阿倍野 Q's Mall | B: 京都河原町/京都站晚餐
   hotelNames: {
     okayama: "岡山車站周邊飯店（待填寫飯店名稱與訂房代號）",
     osaka: "大阪新今宮周邊飯店（待填寫飯店名稱與訂房代號）"
@@ -419,54 +420,105 @@ const defaultTripData = {
       date: "7/3 (六)",
       fullDate: "2027-07-03",
       city: "京都 ➔ 大阪",
-      title: "京都鐵道博物館、鴨川散步與新世界串炸",
-      passBadge: "💳 ICOCA 刷卡日（JR / 阪急或京阪電車）",
+      title: "京都鐵道博物館、鴨川散步 & 晚餐二擇一",
+      passBadge: "💳 ICOCA 刷卡日（JR / 京阪或阪急電車）",
       passType: "icoca",
-      transportSummary: "去程：自新今宮搭 JR 至大阪轉京都線至「梅小路京都西站」。回程：自鴨川旁（京都河原町站）搭阪急電車直通大阪地鐵堺筋線，直達通天閣/新今宮！",
+      transportSummary: "去程：自新今宮搭 JR 至大阪轉京都線至「梅小路京都西站」。傍晚可選「回大阪阿倍野 Q's Mall」或「留在京都吃完晚餐再回新今宮」！",
       hotelArea: "大阪新今宮周邊 (第 5/5 晚)",
-      notes: "想體驗京都鐵道博物館的「駕駛模擬器」，記得先下載官方抽選 App 並在入館後立刻登記抽選，同時先買 SL 蒸汽火車乘車券！下午去鴨川建議帶條小毛巾讓孩子踩水。",
-      items: [
-        {
-          id: "d8-1",
-          time: "08:30",
-          category: "🚆 鐵道出發",
-          title: "JR 新今宮 ➔ 大阪 ➔ 京都 ➔ 梅小路京都西站",
-          desc: "全程刷 ICOCA 搭乘 JR 前往京都。在京都站轉搭嵯峨野線（32/33號月台）只要 1 站（約 3 分鐘）就到梅小路京都西站，出站過馬路就是博物館大門！",
-          highlight: "💳 刷 ICOCA 免買票，轉乘順暢",
-          mapQuery: "Umekoji-Kyotonishi Station",
-          done: false
-        },
-        {
-          id: "d8-2",
-          time: "上午～中午",
-          category: "🚂 鐵道聖地",
-          title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、模擬器",
-          desc: "鐵道迷終極聖地！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，還能在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
-          highlight: "🚂 SL 蒸汽火車每班次固定，進館建議先到本館後方月台購票",
-          mapQuery: "Kyoto Railway Museum",
-          done: false
-        },
-        {
-          id: "d8-3",
-          time: "下午",
-          category: "🐢 河岸散策",
-          title: "京都鴨川散步 & 跳烏龜石（三條～四條河原町 / 鴨川三角洲）",
-          desc: "從梅小路搭公車或計程車前往鴨川河畔！可以在「鴨川三角洲（出町柳）」或「三條大橋～四條大橋」沿著清澈河岸散步、帶 3 小踩水跳烏龜石（飛び石）、看夏季特有的鴨川納涼床與水鳥，順便在河原町享用京都抹茶甜點下午茶。",
-          highlight: "🚇 返程超順秘技：逛完直接從四條鴨川旁的「阪急京都河原町站」搭車（往天下茶屋方向直通堺筋線），免走回京都站即可直達通天閣（惠美須町站）／新今宮（動物園前站）！",
-          mapQuery: "Kamogawa River Kyoto",
-          done: false
-        },
-        {
-          id: "d8-4",
-          time: "傍晚～晚上",
-          category: "🗼 最後採買與美食",
-          title: "返回大阪新今宮：通天閣 / 新世界商圈 & 串炸晚餐",
-          desc: "傍晚抵達新世界商店街與地標「通天閣」。晚餐大啖現炸酥脆的大阪名物「串炸（串カツだるま 元祖串炸達摩等）」，順便去 MEGA 唐吉訶德新世界店做最後伴手禮採買！",
-          highlight: "🛒 MEGA 唐吉訶德新世界店就在新今宮站旁，買完直接提回飯店打包超方便！",
-          mapQuery: "Tsutenkaku",
-          done: false
-        }
-      ]
+      notes: "想體驗京都鐵道博物館的「駕駛模擬器」，記得先下載官方抽選 App 並在入館後立刻登記抽選，同時先買 SL 蒸汽火車乘車券！傍晚可視孩子體力在下方切換「阿倍野 Q's Mall」或「京都晚餐」。",
+      hasOptions: true,
+      optionKey: "day8Option",
+      optionTitle: "🔀 Day 8 傍晚晚餐＆採買方案切換（依當天體力二擇一）：",
+      optionLabels: {
+        A: "🛍️ 選項 A：阿倍野 Q's Mall 親子採買晚餐",
+        B: "🍵 選項 B：留在京都吃晚餐＋伴手禮"
+      },
+      optionsData: {
+        A: [
+          {
+            id: "d8-a1",
+            time: "08:30",
+            category: "🚆 鐵道出發",
+            title: "JR 新今宮 ➔ 大阪 ➔ 京都 ➔ 梅小路京都西站",
+            desc: "全程刷 ICOCA 搭乘 JR 前往京都。在京都站轉搭嵯峨野線（32/33號月台）只要 1 站（約 3 分鐘）就到梅小路京都西站，出站過馬路就是博物館大門！",
+            highlight: "💳 刷 ICOCA 免買票，轉乘順暢",
+            mapQuery: "Umekoji-Kyotonishi Station",
+            done: false
+          },
+          {
+            id: "d8-a2",
+            time: "上午～中午",
+            category: "🚂 鐵道聖地",
+            title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、模擬器",
+            desc: "鐵道迷終極聖地！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，還能在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
+            highlight: "🚂 SL 蒸汽火車每班次固定，進館建議先到本館後方月台購票",
+            mapQuery: "Kyoto Railway Museum",
+            done: false
+          },
+          {
+            id: "d8-a3",
+            time: "下午",
+            category: "🐢 河岸散策",
+            title: "京都鴨川散步 & 跳烏龜石（三條～四條河原町 / 鴨川三角洲）",
+            desc: "從梅小路搭公車或計程車前往鴨川河畔！沿著清澈河岸散步、帶 3 小踩水跳烏龜石（飛び石）、看水鳥與河岸風光，順便喝杯京都咖啡或抹茶下午茶。",
+            highlight: "🚇 逛完可從鴨川旁搭「京阪電車（祇園四條/三條 ➔ 京橋）」轉 JR 環狀線直達天王寺站（阿倍野）！",
+            mapQuery: "Kamogawa River Kyoto",
+            done: false
+          },
+          {
+            id: "d8-a4",
+            time: "傍晚～晚上",
+            category: "🛍️ 選項 A：大阪阿倍野商圈",
+            title: "阿倍野 Q's Mall 晚餐與最後採買（天王寺站・距新今宮僅 1 站）",
+            desc: "返回大阪天王寺站直通「阿倍野 Q's Mall」！這裡空間寬敞現代、推車與親子極度友善，有超好買的「阿卡將本鋪 (Akachan)」、大型超市 Ito Yokado（買水果零食伴手禮超便宜）、Uniqlo、Bic Camera 與 3F/4F 豐富親子餐廳美食街。吃飽散步或搭 1 站就回新今宮飯店！",
+            highlight: "👶 大阪最強親子購物中心！若想看夜景還可順遊隔壁棟「阿倍野 Harukas 300 展望台」",
+            mapQuery: "Abeno Q's Mall",
+            done: false
+          }
+        ],
+        B: [
+          {
+            id: "d8-b1",
+            time: "08:30",
+            category: "🚆 鐵道出發",
+            title: "JR 新今宮 ➔ 大阪 ➔ 京都 ➔ 梅小路京都西站",
+            desc: "全程刷 ICOCA 搭乘 JR 前往京都。在京都站轉搭嵯峨野線（32/33號月台）只要 1 站（約 3 分鐘）就到梅小路京都西站，出站過馬路就是博物館大門！",
+            highlight: "💳 刷 ICOCA 免買票，轉乘順暢",
+            mapQuery: "Umekoji-Kyotonishi Station",
+            done: false
+          },
+          {
+            id: "d8-b2",
+            time: "上午～中午",
+            category: "🚂 鐵道聖地",
+            title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、模擬器",
+            desc: "鐵道迷終極聖地！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，還能在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
+            highlight: "🚂 SL 蒸汽火車每班次固定，進館建議先到本館後方月台購票",
+            mapQuery: "Kyoto Railway Museum",
+            done: false
+          },
+          {
+            id: "d8-b3",
+            time: "下午",
+            category: "🐢 河岸散策",
+            title: "京都鴨川散步 & 跳烏龜石（三條～四條河原町 / 鴨川三角洲）",
+            desc: "從梅小路搭公車或計程車前往鴨川河畔！在鴨川三角洲或三條～四條大橋散步、帶 3 小踩水跳烏龜石（飛び石），享受悠閒的京都午後。",
+            highlight: "🐢 不用趕回大阪，下午可以慢慢在鴨川與河原町散策",
+            mapQuery: "Kamogawa River Kyoto",
+            done: false
+          },
+          {
+            id: "d8-b4",
+            time: "傍晚～晚上",
+            category: "🍵 選項 B：京都美食與伴手禮",
+            title: "京都晚餐（四條河原町商圈 或 京都車站伊勢丹/Porta）➔ 搭車返新今宮",
+            desc: "直接在四條河原町百貨餐廳街（高島屋 S.C. 有任天堂京都店！）或回到京都車站（拉麵小路、名代豬排、壽喜燒、中村藤吉抹茶）悠閒享用晚餐，一次買齊京都限定伴手禮（Malebranche 茶之菓、生八橋等），吃飽後再搭車返回新今宮飯店打包行李！",
+            highlight: "🚆 從河原町搭「阪急直通堺筋線」或從京都站搭「JR 新快速」都能輕鬆回新今宮",
+            mapQuery: "Kyoto Station",
+            done: false
+          }
+        ]
+      }
     },
     {
       day: 9,
@@ -596,8 +648,8 @@ function switchTab(tabName) {
   renderAll();
 }
 
-function switchDay7Option(opt) {
-  state.day7Option = opt;
+function switchDayOption(optionKey, opt) {
+  state[optionKey] = opt;
   saveState();
   renderMainContent();
 }
@@ -607,7 +659,9 @@ function toggleItemDone(dayNum, itemId) {
   if (!dayObj) return;
 
   if (dayObj.hasOptions) {
-    const list = dayObj.optionsData[state.day7Option] || [];
+    const key = dayObj.optionKey || "day7Option";
+    const currentOpt = state[key] || "A";
+    const list = dayObj.optionsData[currentOpt] || [];
     const item = list.find((i) => i.id === itemId);
     if (item) item.done = !item.done;
   } else {
@@ -684,7 +738,9 @@ function saveNewEvent() {
   };
 
   if (dayObj.hasOptions) {
-    dayObj.optionsData[state.day7Option].push(newItem);
+    const key = dayObj.optionKey || "day7Option";
+    const currentOpt = state[key] || "A";
+    dayObj.optionsData[currentOpt].push(newItem);
   } else {
     dayObj.items.push(newItem);
   }
@@ -718,18 +774,27 @@ function renderItineraryView() {
       ? "transport-icoca"
       : "transport-bus";
 
-  const currentItems = d.hasOptions ? d.optionsData[state.day7Option] : d.items;
+  const optKey = d.optionKey || "day7Option";
+  const currentOpt = state[optKey] || "A";
+  const currentItems = d.hasOptions ? d.optionsData[currentOpt] : d.items;
+
+  const optTitle =
+    d.optionTitle || "🔀 Day 7 二擇一彈性方案切換（點擊切換當日行程）：";
+  const labelA =
+    (d.optionLabels && d.optionLabels.A) || "🦈 選項 A：大阪海遊館＋摩天輪";
+  const labelB =
+    (d.optionLabels && d.optionLabels.B) || "🧗 選項 B：Kids Plaza 兒童樂園";
 
   const optionSwitcherHtml = d.hasOptions
     ? `
       <div class="option-switcher">
-        <div class="option-switcher-title">🔀 Day 7 二擇一彈性方案切換（點擊切換當日行程）：</div>
+        <div class="option-switcher-title">${optTitle}</div>
         <div class="option-buttons">
-          <button class="opt-btn ${state.day7Option === "A" ? "active" : ""}" onclick="switchDay7Option('A')">
-            🦈 選項 A：大阪海遊館＋摩天輪
+          <button class="opt-btn ${currentOpt === "A" ? "active" : ""}" onclick="switchDayOption('${optKey}', 'A')">
+            ${labelA}
           </button>
-          <button class="opt-btn ${state.day7Option === "B" ? "active" : ""}" onclick="switchDay7Option('B')">
-            🧗 選項 B：Kids Plaza 兒童樂園
+          <button class="opt-btn ${currentOpt === "B" ? "active" : ""}" onclick="switchDayOption('${optKey}', 'B')">
+            ${labelB}
           </button>
         </div>
       </div>
@@ -854,7 +919,7 @@ function renderPassView() {
       <h3>🟣 Day 7 ~ Day 9：ICOCA 與關西機場交通</h3>
       <ul style="font-size:0.86rem;padding-left:18px;margin:0;line-height:1.7;">
         <li><strong>Day 7 (大阪市區)：</strong>刷 ICOCA 搭乘 Osaka Metro 地鐵（往大阪港海遊館，或堺筋線直達扇町站 Kids Plaza）。</li>
-        <li><strong>Day 8 (京都鐵道博物館＋鴨川)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；下午逛完鴨川後，直接從四條鴨川旁的<strong>「阪急京都河原町站」</strong>搭車（直通大阪地鐵堺筋線），免回京都車站就能直達通天閣（惠美須町站）／新今宮（動物園前站）！</li>
+        <li><strong>Day 8 (京都鐵道博物館＋鴨川＋晚餐二擇一)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；傍晚若選<strong>「選項 A：阿倍野 Q's Mall」</strong>可搭京阪或 JR 至天王寺站（距新今宮僅 1 站）；若選<strong>「選項 B：留在京都晚餐」</strong>，可在四條河原町或京都車站吃飽買齊伴手禮後再搭車回新今宮！</li>
         <li><strong>Day 9 (新今宮 ➔ 關西機場)：</strong>新今宮站可選擇搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>直達關西機場第一航廈。</li>
       </ul>
     </div>
