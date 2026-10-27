@@ -1,15 +1,15 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
+// 岡山住 4 晚 (6/26~6/30) ＋ 大阪新今宮住 4 晚 (6/30~7/4)
 
-const STORAGE_KEY = "okayama_kansai_2027_v7";
+const STORAGE_KEY = "okayama_kansai_2027_v8";
 
 const defaultTripData = {
   selectedDay: 1,
   activeTab: "itinerary", // itinerary | pass | flightHotel | checklist
-  day7Option: "A", // A: 海遊館 | B: Kids Plaza
   day8Option: "A", // A: 阿倍野 Q's Mall | B: 京都河原町/京都站晚餐
   hotelNames: {
-    okayama: "岡山車站周邊飯店（待填寫飯店名稱與訂房代號）",
-    osaka: "大阪新今宮周邊飯店（待填寫飯店名稱與訂房代號）"
+    okayama: "岡山車站周邊飯店（6/26~6/30 共 4 晚，待填寫飯店名稱與訂房代號）",
+    osaka: "大阪新今宮周邊飯店（6/30~7/4 共 4 晚，待填寫飯店名稱與訂房代號）"
   },
   days: [
     {
@@ -21,8 +21,8 @@ const defaultTripData = {
       passBadge: "🚌 機場利木津巴士（現場購票/刷卡）",
       passType: "bus",
       transportSummary: "IT 214 (11:30 桃園 T1 起飛 ➔ 15:05 抵達岡山)。預計 15:50~16:10 出關搭利木津巴士（約 30 分鐘）直達 JR 岡山站。",
-      hotelArea: "岡山車站周邊 (第 1/3 晚)",
-      notes: "抵達 JR 岡山站約 16:40，建議一人帶孩子先去飯店 Check-in，一人去岡山站綠色窗口兌換「JR 關西廣域周遊券」及領取 Day 3 麵包超人小火車指定席券！",
+      hotelArea: "岡山車站周邊 (第 1/4 晚)",
+      notes: "抵達 JR 岡山站約 16:40，建議一人帶孩子先去飯店 Check-in，一人去岡山站綠色窗口兌換隔天要啟用的「JR 關西&廣島地區周遊券 (5日券)」及領取明日（週日限定！）麵包超人小火車指定席券！",
       items: [
         {
           id: "d1-0",
@@ -59,7 +59,7 @@ const defaultTripData = {
           time: "17:30 – 20:30",
           category: "🛍️ 用餐與採買",
           title: "岡山車站共構商場 / AEON MALL 岡山晚餐與採買",
-          desc: "放好行李、換好 JR 周遊券後，經由地下連通道步行 5 分鐘直達 AEON MALL 岡山享用晚餐，順便在 1F 超市採買兒童零食、牛奶、岡山白桃與日用品。",
+          desc: "放好行李、換好 JR 周遊券與明日麵包超人車票後，經由地下連通道步行 5 分鐘直達 AEON MALL 岡山享用晚餐，順便在 1F 超市採買兒童零食、牛奶、岡山白桃與日用品。",
           highlight: "🍑 AEON 1樓超市與 6-7樓餐廳街選擇非常豐富，推車友善！",
           mapQuery: "AEON MALL Okayama",
           done: false
@@ -70,52 +70,62 @@ const defaultTripData = {
       day: 2,
       date: "6/27 (日)",
       fullDate: "2027-06-27",
-      city: "倉敷",
-      title: "倉敷一日遊：美觀散策與購物",
-      passBadge: "🎫 JR 周遊券 Day 1 / 5（今日起啟用）",
+      city: "四國香川",
+      title: "四國特色體驗：週日限定麵包超人小火車、踩烏龍麵與水族館",
+      passBadge: "🎫 JR 關西&廣島周遊券 Day 1 / 5（今日起啟用！）",
       passType: "jr",
-      transportSummary: "搭乘 JR 山陽本線（或伯備線）往返「岡山站 ⇄ 倉敷站」，車程僅約 17 分鐘，今日起正式啟用 JR 周遊券！",
-      hotelArea: "岡山車站周邊 (第 2/3 晚)",
-      notes: "倉敷川遊船名額有限，抵達美觀地區後建議先去「倉敷館觀光案內所」購買當日船票！",
+      transportSummary: "岡山 ➔ 琴平 ➔ 宇多津 ➔ 岡山。今日為週日，完美搭上假日行駛的「麵包超人小火車」！持周遊券需另備妥小火車綠色車廂指定席券與四國段補票。",
+      hotelArea: "岡山車站周邊 (第 2/4 晚)",
+      notes: "瀨戶大橋麵包超人小火車僅週末假日行駛，排在 6/27 (週日) 剛剛好！11:17 發車絕對不能遲到，中野烏龍麵學校預約場次也請再次確認。",
       items: [
         {
           id: "d2-1",
-          time: "09:00",
-          category: "🚆 鐵道移動",
-          title: "JR 岡山站 ➔ JR 倉敷站",
-          desc: "持 JR 周遊券走自動改札機進站，搭乘 JR 山陽本線前往倉敷站，從南口步行約 10-15 分鐘進入美觀地區。",
-          highlight: "🎫 啟用 JR 關西廣域周遊券 (第 1 天)",
-          mapQuery: "Kurashiki Station",
+          time: "10:00",
+          category: "📸 鐵道攝影",
+          title: "JR 岡山站月台鐵道攝影（啟用 JR 周遊券 Day 1）",
+          desc: "提早進站到月台欣賞各式四國特急列車（南風號麵包超人列車、潮風號、Marine Liner 雙層列車）與彩繪列車進站。",
+          highlight: "📷 鐵道迷小孩最愛時光！順便在車站買鐵路便當上車吃",
+          mapQuery: "JR Okayama Station",
           done: false
         },
         {
           id: "d2-2",
-          time: "上午",
-          category: "🛶 散策與遊船",
-          title: "倉敷美觀地區散策、川舟遊船與午餐",
-          desc: "漫步白壁宅邸與柳樹沿岸，搭乘傳統小舟遊覽倉敷川。午餐可品嚐倉敷名物「ぶっかけ亭本舗 ふるいち」烏龍麵或町家定食、白桃聖代。",
-          highlight: "🛶 先衝倉敷館買船票，再慢慢逛牛仔褲街與桃太郎機關博物館！",
-          mapQuery: "Kurashiki Bikan Historical Quarter",
+          time: "11:17 – 12:43",
+          category: "🚂 假日限定觀光列車",
+          title: "搭乘「瀨戶大橋麵包超人小火車 1號」(岡山 ➔ 琴平)",
+          desc: "週六日限定行駛！全車開放式木質吹風景觀車廂，行經壯觀的瀨戶大橋跨海前往四國琴平！車上有麵包超人紀念章、拍照區與地板透明觀景窗。",
+          highlight: "⚠️ 全車綠色車廂指定席，務必備妥「周遊券＋兒島至琴平段乘車券＋綠色車廂指定席券」",
+          mapQuery: "Kotohira Station",
           done: false
         },
         {
           id: "d2-3",
           time: "下午",
-          category: "🛍️ 商場採買",
-          title: "MITSUI OUTLET PARK 倉敷 & Ario 倉敷",
-          desc: "從美觀地區走回倉敷站北口即可直通 Ario 商場與三井 Outlet！Ario 有美食街與阿卡將/童裝，中間還有綠意草皮廣場讓孩子放電。",
-          highlight: "👶 Ario 2樓餐飲與親子設施齊全，逛累了隨時可休息",
-          mapQuery: "MITSUI OUTLET PARK Kurashiki",
+          category: "🍜 親子手作",
+          title: "中野烏龍麵學校（琴平校）踩麵團體驗",
+          desc: "跟著熱情的老師邊放動感音樂邊用腳踩烏龍麵團、桿麵、切麵，最後現場煮熟自己做的烏龍麵當午餐，結業還可領取秘傳卷軸畢業證書與擀麵棍！",
+          highlight: "👨‍👩‍👧‍👦 報名配置：3 小體驗 ＋ 2 大陪同拍照協助",
+          mapQuery: "Nakano Udon School Kotohira",
           done: false
         },
         {
           id: "d2-4",
-          time: "傍晚",
-          category: "🚆 返回岡山",
-          title: "搭乘 JR 山陽本線返回岡山站",
-          desc: "提著戰利品輕鬆搭 JR 回到岡山車站，晚餐可於岡山站周邊享用。",
+          time: "下午～傍晚",
+          category: "🐬 海景水族館",
+          title: "四國水族館（宇多津）看海豚與瀨戶內海夕陽",
+          desc: "自琴平搭車前往宇多津站，步行前往緊鄰瀨戶內海的「四國水族館」。必看以瀨戶內海與夕陽為背景的無邊際海豚跳躍秀！",
+          highlight: "🌅 夕陽時段的海豚池背光剪影超美，館內動線平緩好走",
+          mapQuery: "Shikoku Aquarium",
+          done: false
+        },
+        {
+          id: "d2-5",
+          time: "晚上",
+          category: "🚄 特急返程",
+          title: "宇多津 ➔ 岡山（搭乘快速 Marine Liner 或特急返回岡山站）",
+          desc: "再次跨越瀨戶大橋返回岡山車站，於車站周邊享用晚餐回飯店休息。",
           highlight: "",
-          mapQuery: "Okayama Station",
+          mapQuery: "Utazu Station",
           done: false
         }
       ]
@@ -124,62 +134,52 @@ const defaultTripData = {
       day: 3,
       date: "6/28 (一)",
       fullDate: "2027-06-28",
-      city: "四國香川",
-      title: "四國特色體驗：麵包超人列車、踩烏龍麵與水族館",
-      passBadge: "🎫 JR 周遊券 Day 2 / 5 ＋ 麵包超人指定席",
+      city: "倉敷",
+      title: "倉敷一日遊：美觀地區遊船與 Outlet 採買",
+      passBadge: "🎫 JR 關西&廣島周遊券 Day 2 / 5",
       passType: "jr",
-      transportSummary: "岡山 ➔ 琴平 ➔ 宇多津 ➔ 岡山。持 JR 周遊券（宇多津至琴平段或小火車綠色車廂指定席券需另外加購補票）；傍晚搭特急返回岡山。",
-      hotelArea: "岡山車站周邊 (第 3/3 晚)",
-      notes: "11:17 麵包超人小火車 1號絕對不能遲到！中野烏龍麵學校預約場次請再次確認。",
+      transportSummary: "持 JR 周遊券搭乘 JR 山陽本線（或伯備線）往返「岡山站 ⇄ 倉敷站」，車程僅約 17 分鐘。",
+      hotelArea: "岡山車站周邊 (第 3/4 晚)",
+      notes: "倉敷川遊船名額有限，抵達美觀地區後建議第一件事先去「倉敷館觀光案內所」購買當日船票！",
       items: [
         {
           id: "d3-1",
-          time: "10:00",
-          category: "📸 鐵道攝影",
-          title: "JR 岡山站月台鐵道攝影",
-          desc: "提早進站到月台欣賞各式四國特急列車（南風號、潮風號、Marine Liner 雙層列車）與彩繪列車進站。",
-          highlight: "📷 鐵道迷小孩最愛時光！順便在車站買鐵路便當上車吃",
-          mapQuery: "JR Okayama Station",
+          time: "09:00",
+          category: "🚆 鐵道移動",
+          title: "JR 岡山站 ➔ JR 倉敷站（車程 17 分鐘）",
+          desc: "持 JR 周遊券走自動改札機進站，搭乘 JR 山陽本線前往倉敷站，從南口步行約 10-15 分鐘進入美觀地區。",
+          highlight: "🎫 使用 JR 周遊券 (第 2 天) 免費搭乘",
+          mapQuery: "Kurashiki Station",
           done: false
         },
         {
           id: "d3-2",
-          time: "11:17",
-          category: "🚂 觀光列車",
-          title: "搭乘「瀨戶大橋麵包超人小火車 1號」(岡山 ➔ 琴平)",
-          desc: "全車開放式木質景觀車廂，行經壯觀的瀨戶大橋跨海前往四國琴平！車上有麵包超人紀念章與拍照區。",
-          highlight: "⚠️ 全車綠色車廂指定席，務必備妥「周遊券＋加購之綠色車廂指定席券」",
-          mapQuery: "Kotohira Station",
+          time: "上午",
+          category: "🛶 散策與遊船",
+          title: "倉敷美觀地區散策、川舟遊船與午餐",
+          desc: "漫步白壁宅邸與柳樹沿岸，搭乘傳統小舟遊覽倉敷川。午餐可品嚐倉敷名物「ぶっかけ亭本舗 ふるいち」烏龍麵、Kappa 炸豬排或町家定食、白桃聖代。",
+          highlight: "🛶 先衝倉敷館買船票，再慢慢逛牛仔褲街、史努比巧克力店與桃太郎機關博物館！",
+          mapQuery: "Kurashiki Bikan Historical Quarter",
           done: false
         },
         {
           id: "d3-3",
           time: "下午",
-          category: "🍜 親子手作",
-          title: "中野烏龍麵學校（琴平校）踩麵團體驗",
-          desc: "跟著熱情的老師邊放音樂邊用腳踩烏龍麵團、桿麵、切麵，最後現場煮熟自己做的烏龍麵當午餐，結業還可領取秘傳卷軸畢業證書！",
-          highlight: "👨‍👩‍👧‍👦 報名配置：3 小體驗 ＋ 2 大陪同拍照協助",
-          mapQuery: "Nakano Udon School Kotohira",
+          category: "🛍️ 商場採買",
+          title: "MITSUI OUTLET PARK 倉敷 & Ario 倉敷",
+          desc: "從美觀地區走回倉敷站北口即可直通 Ario 商場與三井 Outlet！Ario 有美食街與童裝雜貨，中間還有「倉敷未來公園」綠意草皮廣場與小溪讓孩子放電。",
+          highlight: "👶 Ario 2樓餐飲與親子設施齊全，逛累了隨時可休息",
+          mapQuery: "MITSUI OUTLET PARK Kurashiki",
           done: false
         },
         {
           id: "d3-4",
-          time: "下午",
-          category: "🐬 海景水族館",
-          title: "四國水族館（宇多津）看海豚與瀨戶內海景",
-          desc: "自琴平前往宇多津站，步行前往緊鄰瀨戶內海的「四國水族館」。必看以瀨戶內海與夕陽為背景的無邊際海豚跳躍秀！",
-          highlight: "🌅 夕陽時段的海豚池背光剪影超美，館內動線平緩好走",
-          mapQuery: "Shikoku Aquarium",
-          done: false
-        },
-        {
-          id: "d3-5",
           time: "傍晚",
-          category: "🚄 特急返程",
-          title: "宇多津 ➔ 岡山（搭乘特急南風號 / 潮風號或快速 Marine Liner）",
-          desc: "再次跨越瀨戶大橋返回岡山車站，整理行李準備隔天跨城移動至大阪。",
+          category: "🚆 返回岡山",
+          title: "搭乘 JR 山陽本線返回岡山站",
+          desc: "提著戰利品輕鬆搭 JR 回到岡山車站（免搬行李連住超輕鬆！）。",
           highlight: "",
-          mapQuery: "Utazu Station",
+          mapQuery: "Okayama Station",
           done: false
         }
       ]
@@ -188,42 +188,62 @@ const defaultTripData = {
       day: 4,
       date: "6/29 (二)",
       fullDate: "2027-06-29",
-      city: "岡山 ➔ 大阪",
-      title: "歷史巡禮與新幹線跨城移動",
-      passBadge: "🎫 JR 周遊券 Day 3 / 5（搭山陽新幹線！）",
+      city: "廣島・宮島",
+      title: "廣島一日遊：宮島海上大鳥居、野生鹿群與紙鶴塔溜滑梯",
+      passBadge: "🎫 JR 關西&廣島周遊券 Day 3 / 5（新幹線＋渡輪全包！）",
       passType: "jr",
-      transportSummary: "上午搭市區公車往返後樂園。中午回飯店領行李，自岡山搭 JR 山陽新幹線至「新大阪站」，轉乘 JR 至「新今宮站」。",
-      hotelArea: "大阪新今宮周邊 (第 1/5 晚)",
-      notes: "今日換飯店日！退房後行李先寄放岡山飯店，中午直接回飯店拿行李去搭新幹線最省力。",
+      transportSummary: "自岡山搭 JR 山陽新幹線至「廣島站」（約 38 分鐘），轉 JR 山陽本線至「宮島口站」搭乘「JR 西日本宮島渡輪」登島；下午返回市區前往「廣島紙鶴塔」。",
+      hotelArea: "岡山車站周邊 (第 4/4 晚)",
+      notes: "持「JR 關西&廣島地區周遊券」不僅可無限搭岡山⇄廣島新幹線，連「JR 宮島渡輪」與廣島市內「JR 觀光循環巴士 Meipuru-pu」都免費包辦！（登宮島僅需每人另付 ¥100 宮島訪問稅）。",
       items: [
         {
           id: "d4-1",
-          time: "09:00",
-          category: "🏯 歷史巡禮",
-          title: "岡山後樂園 & 岡山城（烏城）武士體驗",
-          desc: "從岡山站搭乘市區公車直達日本三大名園「岡山後樂園」漫步大草坪，隨後走過月見橋前往全新翻修的「岡山城」，體驗免費試穿城主/公主服飾與武士刀拍照！",
-          highlight: "⚔️ 岡山城內有電梯無障礙設施，2樓可換裝拍照、1樓可做備前燒或吃烏城聖代",
-          mapQuery: "Okayama Castle",
+          time: "08:15 – 09:30",
+          category: "🚄 新幹線＆渡輪",
+          title: "JR 岡山站 ➔ 廣島站（新幹線 38分）➔ 宮島口站 ➔ JR 宮島渡輪",
+          desc: "持周遊券搭乘山陽新幹線（Sakura/Nozomi 皆可）38 分鐘飆抵廣島站，轉乘 JR 山陽本線（約 28 分鐘）至「宮島口站」，出站走地下道至碼頭搭乘「JR 西日本宮島渡輪」（航程 10 分鐘，船隻會特地繞近大鳥居讓大家拍照！）。",
+          highlight: "⛴️ 務必選擇右邊的「JR 西日本宮島渡輪」，出示 JR 關西&廣島周遊券免船票（僅需投 ¥100 訪問稅）！",
+          mapQuery: "JR West Miyajima Ferry Terminal",
           done: false
         },
         {
           id: "d4-2",
-          time: "中午",
-          category: "🚄 新幹線移動",
-          title: "JR 岡山站 ➔ 新大阪站 ➔ 新今宮站（飯店入住）",
-          desc: "回飯店領取大型行李，使用 JR 關西廣域周遊券搭乘「山陽新幹線 (Nozomi/Mizuho/Sakura 皆可搭)」約 45 分鐘飆速抵達新大阪，再轉 JR 前往新今宮站飯店寄放行李或 Check-in。",
-          highlight: "🧳 若攜帶特大行李（三邊總和 160~250cm），記得事先用周遊券劃位「特大行李放置處附帶席」",
-          mapQuery: "Shin-Imamiya Station",
+          time: "09:40 – 13:30",
+          category: "⛩️ 世界遺產與小鹿",
+          title: "宮島・嚴島神社：觀賞海上大鳥居、野生鹿群 & 表參道美食午餐",
+          desc: "登島後沿著海濱步道與溫馴的野生小鹿互動拍照，參觀世界文化遺產「嚴島神社」與震撼的朱紅色海上大鳥居！中午在熱鬧的表參道商店街品嚐現烤牡蠣、星鰻飯（あなごめし）、炸紅葉饅頭（紅葉堂）與宮島冰淇淋。",
+          highlight: "🦌 宮島不賣鹿仙貝，記得提醒小朋友把紙張、地圖與塑膠袋收好，避免小鹿誤食喔！",
+          mapQuery: "Itsukushima Jinja",
           done: false
         },
         {
           id: "d4-3",
-          time: "傍晚",
-          category: "🏙️ 商圈逛街",
-          title: "大阪梅田商圈逛街（LUCUA osaka / 大丸梅田）",
-          desc: "從新今宮搭 JR 大阪環狀線直達「大阪站（梅田）」。逛 LUCUA 購物中心、大丸梅田店（13樓有寶可夢中心、任天堂大阪旗艦店、トミカ小汽車專賣店！）。",
-          highlight: "🎮 大丸梅田 13F 是小孩天堂，小心荷包失守！",
-          mapQuery: "LUCUA osaka",
+          time: "13:30 – 14:30",
+          category: "🚋 返回廣島市區",
+          title: "搭船返回宮島口 ➔ 前往廣島市區「紙鶴塔 / 原爆圓頂館前」",
+          desc: "搭渡輪回宮島口站，可搭 JR 回廣島站轉乘免費的「廣島觀光循環巴士 Meipuru-pu（楓葉巴士）」直達原爆圓頂館前，或直接從廣島路面電車「廣電宮島口站」搭路面電車直達「原爆ドーム前站」（下車即達紙鶴塔！）。",
+          highlight: "🚌 若回廣島站轉搭紅色的「Meipuru-pu 觀光巴士」，出示 JR 周遊券全家人免費搭乘！",
+          mapQuery: "Hiroshima Orizuru Tower",
+          done: false
+        },
+        {
+          id: "d4-4",
+          time: "14:40 – 17:30",
+          category: "🛝 展望台＆螺旋溜滑梯",
+          title: "廣島紙鶴塔 (Hiroshima Orizuru Tower)：體驗 12 層樓高螺旋溜滑梯！",
+          desc: "登上木質微風吹拂的頂樓展望台「廣島之丘」俯瞰和平紀念公園與原爆圓頂館，體驗互動數位折紙鶴並投入巨大的「紙鶴牆」；接著讓孩子與大人一起挑戰從 12 樓一路滑到 1 樓的超刺激「SPIRAL SLIDE 螺旋溜滑梯」（分為每層可停靠與直達滑梯）！",
+          highlight: "🛝 螺旋溜滑梯免費包含在紙鶴塔門票內（建議穿長褲與球鞋體驗最順暢）！",
+          mapQuery: "Hiroshima Orizuru Tower",
+          done: false
+        },
+        {
+          id: "d4-5",
+          time: "18:00 – 20:00",
+          category: "🥞 廣島燒晚餐＆返程",
+          title: "廣島車站 ekie 美食街吃「廣島燒」➔ 搭新幹線 38 分鐘回岡山",
+          desc: "返回廣島車站，在車站共構商場 ekie 1F「廣島燒一條街（麗ちゃん、みっちゃん總本店等）」品嚐正宗鐵板廣島燒，吃飽買楓葉饅頭伴手禮，搭山陽新幹線 38 分鐘輕鬆回岡山飯店！",
+          highlight: "🚄 新幹線班次極多，吃飽隨時有車回岡山，完全不趕時間！",
+          mapQuery: "ekie Hiroshima",
           done: false
         }
       ]
@@ -232,26 +252,70 @@ const defaultTripData = {
       day: 5,
       date: "6/30 (三)",
       fullDate: "2027-06-30",
-      city: "大阪 USJ",
-      title: "日本環球影城 (USJ) 狂歡一日遊",
-      passBadge: "🎫 JR 周遊券 Day 4 / 5",
+      city: "岡山 ➔ 大阪",
+      title: "歷史巡禮（岡山城・後樂園）與新幹線跨城至大阪",
+      passBadge: "🎫 JR 關西&廣島周遊券 Day 4 / 5（搭新幹線往大阪！）",
       passType: "jr",
-      transportSummary: "自 JR 新今宮站搭乘「大阪環狀線」於「西九條站」轉乘「JR 夢咲線（櫻島線）」至「環球城站 (Universal-City)」。",
-      hotelArea: "大阪新今宮周邊 (第 2/5 晚)",
-      notes: "務必事先下載「USJ 官方 App」並綁定全家人門票，入園第一時間抽「超級任天堂世界」整理券（或使用快通）！",
+      transportSummary: "上午搭市區公車或路面電車往返後樂園。中午回飯店領行李，自岡山搭 JR 山陽新幹線至「新大阪站」，轉乘 JR 至「新今宮站」。",
+      hotelArea: "大阪新今宮周邊 (第 1/4 晚)",
+      notes: "今日換飯店日！早上退房後行李先寄放岡山飯店，中午回飯店拿行李直接搭新幹線去大阪新今宮。",
       items: [
         {
           id: "d5-1",
+          time: "09:00",
+          category: "🏯 歷史巡禮",
+          title: "岡山後樂園 & 岡山城（烏城）武士體驗",
+          desc: "從岡山站搭乘市區公車直達日本三大名園「岡山後樂園」漫步大草坪，隨後走過月見橋前往全新翻修的「岡山城」，體驗免費試穿城主/公主服飾與武士刀拍照！",
+          highlight: "⚔️ 岡山城內有電梯無障礙設施，2樓可換裝拍照、1樓可吃烏城白桃聖代",
+          mapQuery: "Okayama Castle",
+          done: false
+        },
+        {
+          id: "d5-2",
+          time: "中午",
+          category: "🚄 新幹線跨城",
+          title: "JR 岡山站 ➔ 新大阪站 ➔ 新今宮站（飯店入住）",
+          desc: "回飯店領取大型行李，使用 JR 周遊券搭乘「山陽新幹線 (Nozomi/Mizuho/Sakura 皆可搭)」約 45 分鐘飆速抵達新大阪，再轉 JR 前往新今宮站飯店寄放行李或 Check-in。",
+          highlight: "🧳 若攜帶特大行李（三邊總和 160~250cm），記得事先用周遊券劃位「特大行李放置處附帶席」",
+          mapQuery: "Shin-Imamiya Station",
+          done: false
+        },
+        {
+          id: "d5-3",
+          time: "傍晚～晚上",
+          category: "🏙️ 商圈逛街",
+          title: "大阪梅田商圈逛街（LUCUA osaka / 大丸梅田 13F）",
+          desc: "從新今宮搭 JR 大阪環狀線直達「大阪站（梅田）」。逛 LUCUA 購物中心、大丸梅田店（13樓有寶可夢中心、任天堂大阪旗艦店、トミカ小汽車與樂高專賣店！）。",
+          highlight: "🎮 大丸梅田 13F 是小孩天堂，一次逛齊任天堂與寶可夢！",
+          mapQuery: "LUCUA osaka",
+          done: false
+        }
+      ]
+    },
+    {
+      day: 6,
+      date: "7/1 (四)",
+      fullDate: "2027-07-01",
+      city: "大阪 USJ",
+      title: "日本環球影城 (USJ) 狂歡一日遊（平日週四入園！）",
+      passBadge: "🎫 JR 關西&廣島周遊券 Day 5 / 5（最後一日！）",
+      passType: "jr",
+      transportSummary: "自 JR 新今宮站搭乘「大阪環狀線」於「西九條站」轉乘「JR 夢咲線（櫻島線）」至「環球城站 (Universal-City)」。",
+      hotelArea: "大阪新今宮周邊 (第 2/4 晚)",
+      notes: "排在週四入園避開週末人潮！務必事先下載「USJ 官方 App」並綁定全家人門票，入園第一時間抽「超級任天堂世界」整理券（或使用快通）！",
+      items: [
+        {
+          id: "d6-1",
           time: "07:30",
           category: "🚆 出發入園",
-          title: "新今宮 ➔ 西九條 ➔ 環球城站",
+          title: "新今宮 ➔ 西九條 ➔ 環球城站（使用 JR 周遊券最後一日）",
           desc: "持 JR 周遊券直接進站，在西九條站同月台轉乘往櫻島方向的列車，約 20 分鐘即可抵達環球影城大門口！",
           highlight: "🎫 全程屬於 JR 路線，直接用 JR 周遊券免費搭乘",
           mapQuery: "Universal Studios Japan",
           done: false
         },
         {
-          id: "d5-2",
+          id: "d6-2",
           time: "上午",
           category: "🍄 主題園區 1",
           title: "主攻：超級任天堂世界 (Super Nintendo World)",
@@ -261,21 +325,21 @@ const defaultTripData = {
           done: false
         },
         {
-          id: "d5-3",
+          id: "d6-3",
           time: "下午",
           category: "🪄 主題園區 2",
           title: "主攻：哈利波特魔法世界 & 小小兵樂園 / 環球奇境",
           desc: "走進活米村喝冰涼奶油啤酒（無酒精兒童可喝）、看霍格華茲城堡與魔杖互動魔法；下午可帶小朋友去「環球奇境 (Universal Wonderland)」或小小兵園區玩溫和設施。",
-          highlight: "🍺 奶油啤酒冰沙版在 6 月底超消暑！",
+          highlight: "🍺 奶油啤酒冰沙版在 7 月初超消暑！",
           mapQuery: "The Wizarding World of Harry Potter Osaka",
           done: false
         },
         {
-          id: "d5-4",
+          id: "d6-4",
           time: "晚上",
           category: "🚆 賦歸休息",
           title: "環球城市步行街晚餐 ➔ 返回新今宮飯店",
-          desc: "出園後在 Universal CityWalk 用餐或買消夜，搭 JR 回到新今宮站好好泡澡休息。",
+          desc: "出園後在 Universal CityWalk 用餐或買消夜，趁午夜前持周遊券搭 JR 回到新今宮站好好泡澡休息。",
           highlight: "",
           mapQuery: "Universal CityWalk Osaka",
           done: false
@@ -283,29 +347,29 @@ const defaultTripData = {
       ]
     },
     {
-      day: 6,
-      date: "7/1 (四)",
-      fullDate: "2027-07-01",
+      day: 7,
+      date: "7/2 (五)",
+      fullDate: "2027-07-02",
       city: "神戶",
-      title: "神戶生態互動與浪漫百萬夜景",
-      passBadge: "🎫 JR 周遊券 Day 5 / 5（最後一日！）",
-      passType: "jr",
-      transportSummary: "搭 JR 至「三ノ宮站」（JR 周遊券最後一日）；轉乘神戶新交通 Port Liner 至「計算科學中心站」（可購買 Port Liner 套票或刷 ICOCA）。",
-      hotelArea: "大阪新今宮周邊 (第 3/5 晚)",
-      notes: "在三ノ宮轉乘 Port Liner 前，可以在 Port Liner 三宮站售票口詢問「神戶動物王國＋電車來回優惠套票」！",
+      title: "神戶生態互動（神戶動物王國）與神戶港浪漫夜景",
+      passBadge: "💳 ICOCA 刷卡日 ＋ Port Liner 動物王國套票",
+      passType: "icoca",
+      transportSummary: "今日起全程使用 ICOCA 刷卡！自新今宮搭 JR 至「三ノ宮站」，轉乘神戶新交通 Port Liner 至「計算科學中心站」。",
+      hotelArea: "大阪新今宮周邊 (第 3/4 晚)",
+      notes: "在三ノ宮轉乘 Port Liner 前，記得在 Port Liner 三宮站售票窗口購買「神戶動物王國＋Port Liner 來回電車優惠套票」（等於送電車車資）！",
       items: [
         {
-          id: "d6-1",
+          id: "d7-1",
           time: "09:00",
           category: "🚆 跨城交通",
           title: "JR 新今宮 ➔ 大阪站 ➔ JR 三ノ宮站 ➔ 計算科學中心站",
-          desc: "使用 JR 周遊券最後一天搭新快速列車前往神戶三ノ宮站，再轉乘高架無人駕駛的 Port Liner 前往神戶動物王國。",
-          highlight: "🎫 JR 周遊券第 5 天到期日，回程務必在午夜前出站！",
+          desc: "刷 ICOCA 搭乘 JR 新快速列車前往神戶三ノ宮站，再轉乘高架無人駕駛的 Port Liner（孩子最愛坐第一排看風景！）前往神戶動物王國。",
+          highlight: "🎫 推薦在 Port Liner 三宮站購買「動物王國門票＋電車來回套票」超划算！",
           mapQuery: "Sannomiya Station",
           done: false
         },
         {
-          id: "d6-2",
+          id: "d7-2",
           time: "全日",
           category: "🦙 親子生態",
           title: "神戶動物王國（室內無障礙・水豚零距離互動）",
@@ -315,131 +379,26 @@ const defaultTripData = {
           done: false
         },
         {
-          id: "d6-3",
+          id: "d7-3",
           time: "傍晚",
           category: "🌃 港灣夜景",
           title: "神戶港 (Kobe Harborland / 美利堅公園) 欣賞夜景",
-          desc: "傍晚前往神戶港邊，在 umie 商場或馬賽克廣場 (MOSAIC) 享用晚餐（旁邊還有麵包超人博物館商場區可免費逛一樓商店），欣賞神戶塔、海洋博物館與摩天輪點燈夜景。",
+          desc: "傍晚前往神戶港邊，在 umie 商場或馬賽克廣場 (MOSAIC) 享用晚餐（旁邊還有神戶麵包超人博物館 1 樓免費商店區可逛），欣賞神戶塔、海洋博物館與摩天輪點燈夜景。",
           highlight: "🚢 海風徐徐、步道寬敞，拍全家福夜景絕佳地點",
           mapQuery: "Kobe Harborland umie",
           done: false
         },
         {
-          id: "d6-4",
+          id: "d7-4",
           time: "晚上",
           category: "🚆 返回大阪",
-          title: "自 JR 神戶站（或三ノ宮站）搭 JR 返回新今宮",
-          desc: "從馬賽克廣場步行至「JR 神戶站」比回三宮更近！直接持周遊券搭 JR 返回大阪新今宮。",
-          highlight: "💡 小撇步：從神戶港走地下街直通「JR 神戶站」只要約 8 分鐘！",
+          title: "自 JR 神戶站（或三ノ宮站）刷 ICOCA 搭 JR 返回新今宮",
+          desc: "從馬賽克廣場走地下街直通「JR 神戶站」只要約 8 分鐘（比回三宮更近！），搭 JR 新快速＋環狀線返回大阪新今宮。",
+          highlight: "",
           mapQuery: "JR Kobe Station",
           done: false
         }
       ]
-    },
-    {
-      day: 7,
-      date: "7/2 (五)",
-      fullDate: "2027-07-02",
-      city: "大阪市區",
-      title: "大阪市區遊覽（二擇一彈性日）",
-      passBadge: "💳 ICOCA 刷卡日（大阪地鐵）",
-      passType: "icoca",
-      transportSummary: "今日起 JR 周遊券已結束，全程使用 ICOCA 交通卡刷卡搭乘大阪地鐵 (Osaka Metro) 前往目的地。",
-      hotelArea: "大阪新今宮周邊 (第 4/5 晚)",
-      notes: "可依當天天氣與孩子體力，在下方一鍵切換「選項 A：海遊館＋大阪城公園溜滑梯＋心齋橋道頓堀」或「選項 B：Kids Plaza 室內兒童樂園」！",
-      hasOptions: true,
-      optionKey: "day7Option",
-      optionTitle: "🔀 Day 7 二擇一彈性方案切換（點擊切換當日行程）：",
-      optionLabels: {
-        A: "🦈 選項 A：海遊館＋大阪城溜滑梯＋心齋橋",
-        B: "🧗 選項 B：Kids Plaza 室內兒童樂園"
-      },
-      optionsData: {
-        A: [
-          {
-            id: "d7-a1",
-            time: "09:15",
-            category: "🚇 地鐵移動 (選項 A)",
-            title: "新今宮（動物園前站）➔ 本町轉中央線 ➔ 大阪港站",
-            desc: "全程刷 ICOCA 搭乘大阪地鐵前往中央線「大阪港站」，步行約 5-8 分鐘直達海遊館。",
-            highlight: "💳 今日起全程使用 ICOCA 感應進站",
-            mapQuery: "Osakako Station",
-            done: false
-          },
-          {
-            id: "d7-a2",
-            time: "09:45 – 12:30",
-            category: "🦈 選項 A：水族館",
-            title: "大阪海遊館（看巨大鯨鯊與環太平洋海洋生物）",
-            desc: "全球最大級室內水族館！搭手扶梯直達 8 樓森林區，再沿著螺旋坡道一路往下繞行巨大的「太平洋水槽」，從不同深度近距離觀賞大鯨鯊、鬼蝠魟、企鵝與海豹。看完直接去搭地鐵（不逛天保山商場）！",
-            highlight: "♿ 全館螺旋斜坡設計，完全不用扛樓梯，非常適合親子慢遊！",
-            mapQuery: "Osaka Aquarium Kaiyukan",
-            done: false
-          },
-          {
-            id: "d7-a3",
-            time: "12:50 – 15:30",
-            category: "🛝 選項 A：午餐與放電",
-            title: "大阪城公園（森之宮站）：R Baker 麵包坊/星巴克餐廳區 & 兒童大型滾輪溜滑梯",
-            desc: "從「大阪港站」搭地鐵中央線【一班車免轉車 16 分鐘】直達「森之宮站」！3B 出口一出來就是噴水廣場時尚餐廳區（有 R Baker 現烤麵包咖啡廳、星巴克與親子餐廳），吃飽旁邊就是超大型兒童複合遊具與滾輪溜滑梯遊樂場，讓 3 小盡情放電！",
-            highlight: "🚇 大阪港 ➔ 森之宮 地鐵中央線一班車直達，出站即達餐廳與溜滑梯，完全不用走遠路！",
-            mapQuery: "Moriguchi Fountain Plaza Osaka Castle Park",
-            done: false
-          },
-          {
-            id: "d7-a4",
-            time: "16:00 – 20:00",
-            category: "🏃‍♂️ 選項 A：商圈逛街與晚餐",
-            title: "心齋橋 & 道頓堀商圈（大丸寶可夢中心、固力果跑跑人、章魚燒晚餐）",
-            desc: "從「森之宮站」搭地鐵長堀鶴見綠地線【一班車免轉車 9 分鐘】直達「心齋橋站」！先逛大丸心齋橋店本館 9F（寶可夢中心 DX、Jump Shop），再散步至道頓堀與「固力果跑跑人」拍全家福、享用晚餐。最後從難波站搭御堂筋線 1 站即回新今宮飯店！",
-            highlight: "🚇 森之宮 ➔ 心齋橋 ➔ 難波 ➔ 動物園前（新今宮），段段一班車直達超輕鬆！",
-            mapQuery: "Dotonbori Glico Sign",
-            done: false
-          }
-        ],
-        B: [
-          {
-            id: "d7-b1",
-            time: "09:30",
-            category: "🚇 地鐵移動 (選項 B)",
-            title: "動物園前站 ➔ 扇町站（Osaka Metro 堺筋線直達！）",
-            desc: "從新今宮旁的「動物園前站」搭乘地鐵堺筋線，不用轉車即可直達「扇町站」，2號出口出站即達 Kids Plaza Osaka！",
-            highlight: "🚇 堺筋線一班車直達，交通超輕鬆！",
-            mapQuery: "Ogimachi Station Osaka",
-            done: false
-          },
-          {
-            id: "d7-b2",
-            time: "10:00 – 14:00",
-            category: "🧗 選項 B：室內放電",
-            title: "大阪兒童樂園 (Kids Plaza Osaka) 科學互動與攀爬",
-            desc: "日本第一座專為兒童打造的博物館！由奧地利建築師百水先生設計的魔幻「兒童城堡」立體迷宮與溜滑梯、超大泡泡體驗、科學互動實驗、以及超市收銀/郵差/章魚燒老闆職業體驗。",
-            highlight: "🎫 憑當日票券可中途出館到旁邊吃午餐再進場繼續玩！旁有扇町公園超長溜滑梯",
-            mapQuery: "Kids Plaza Osaka",
-            done: false
-          },
-          {
-            id: "d7-b3",
-            time: "14:00 – 15:45",
-            category: "🥞 選項 B：商店街散策",
-            title: "天神橋筋商店街（日本最長商店街）覓食逛街",
-            desc: "緊鄰 Kids Plaza 的就是全長 2.6 公里的天神橋筋商店街，有頂棚遮陽避雨，可以邊走邊吃中村屋可樂餅、鳴門鯛魚燒、章魚燒與逛百元藥妝店。",
-            highlight: "😋 在地人日常商店街，物價親民又好逛",
-            mapQuery: "Tenjinbashisuji Shopping Street",
-            done: false
-          },
-          {
-            id: "d7-b4",
-            time: "16:00 – 20:00",
-            category: "🏃‍♂️ 選項 B：商圈逛街與晚餐",
-            title: "心齋橋 & 道頓堀商圈（大丸寶可夢中心、固力果跑跑人、章魚燒晚餐）",
-            desc: "從「扇町站」搭地鐵堺筋線僅 4 站（約 6 分鐘）至「長堀橋站」，走地下街 5 分鐘即達心齋橋！先衝大丸心齋橋店本館 9F（寶可夢中心 DX、Jump Shop），再一路逛到道頓堀跟「固力果跑跑人」拍全家福並享用晚餐。最後從難波站搭御堂筋線 1 站即回新今宮飯店！",
-            highlight: "⚡ 不論選 A 或 B，傍晚都能逛到寶可夢中心與道頓堀跑跑人！",
-            mapQuery: "Dotonbori Glico Sign",
-            done: false
-          }
-        ]
-      }
     },
     {
       day: 8,
@@ -449,8 +408,8 @@ const defaultTripData = {
       title: "京都鐵道博物館、鴨川散步 & 晚餐二擇一",
       passBadge: "💳 ICOCA 刷卡日（JR / 京阪或阪急電車）",
       passType: "icoca",
-      transportSummary: "去程：自新今宮搭 JR 至大阪轉京都線至「梅小路京都西站」。傍晚可選「回大阪阿倍野 Q's Mall」或「留在京都吃完晚餐再回新今宮」！",
-      hotelArea: "大阪新今宮周邊 (第 5/5 晚)",
+      transportSummary: "去程：自新今宮搭 JR 至大阪轉京都線至「梅小路京都西站」。傍晚可選「回大阪阿倍野 Q's Mall / 心齋橋」或「留在京都吃完晚餐再回新今宮」！",
+      hotelArea: "大阪新今宮周邊 (第 4/4 晚)",
       notes: "想體驗京都鐵道博物館的「駕駛模擬器」，記得先下載官方抽選 App 並在入館後立刻登記抽選，同時先買 SL 蒸汽火車乘車券！傍晚可視孩子體力在下方切換「阿倍野 Q's Mall」或「京都晚餐」。",
       hasOptions: true,
       optionKey: "day8Option",
@@ -572,7 +531,7 @@ const defaultTripData = {
           id: "d9-2",
           time: "12:00 – 14:30",
           category: "✈️ 報到、出境與免稅店",
-          title: "關西機場第一航廈 (T1) 報到託運 & 免稅店最後採買",
+          title: "關西國際機場第一航廈 (T1) 報到託運 & 免稅店最後採買",
           desc: "於起飛前 3 小時（約 12:10）至星宇航空櫃檯辦理行李託運。關西機場隨身行李安檢與出境審查建議預留 40~50 分鐘，通關後在全新改裝的 KIX 免稅店享用午餐與採買伴手禮。",
           highlight: "🛍️ 預計 13:15 前完成出境審查，還有整整 1 小時可以悠閒逛免稅店！",
           mapQuery: "Kansai International Airport Terminal 1",
@@ -594,10 +553,10 @@ const defaultTripData = {
   checklist: [
     { id: "c1", text: "護照效期確認（2大3小，需滿 6 個月以上）", done: false },
     { id: "c2", text: "台灣虎航 IT 214 (去程) & 星宇航空 JX 823 (回程) 電子機票確認", done: false },
-    { id: "c3", text: "購買「JR 關西廣域周遊券 5日券」(6/27~7/1 使用)", done: false },
-    { id: "c4", text: "預訂 6/28「瀨戶大橋麵包超人小火車 1號 (11:17)」綠色車廂指定席券", done: false },
-    { id: "c5", text: "預約 6/28「中野烏龍麵學校（琴平校）」(3小體驗＋2大陪同)", done: false },
-    { id: "c6", text: "購買 6/30「日本環球影城 USJ」門票 & 下載官方 App 綁定", done: false },
+    { id: "c3", text: "購買「JR 關西&廣島地區周遊券 5日券」(6/27~7/1 連續使用，含廣島新幹線與宮島渡輪)", done: false },
+    { id: "c4", text: "預訂 6/27 (週日)「瀨戶大橋麵包超人小火車 1號 (11:17)」綠色車廂指定席券", done: false },
+    { id: "c5", text: "預約 6/27「中野烏龍麵學校（琴平校）」(3小體驗＋2大陪同)", done: false },
+    { id: "c6", text: "購買 7/1 (週四)「日本環球影城 USJ」門票 & 下載官方 App 綁定", done: false },
     { id: "c7", text: "準備全員 ICOCA 卡（含兒童 ICOCA，Day 7~9 使用）", done: false },
     { id: "c8", text: "出發前填寫 Visit Japan Web (VJW) 入境與海關申報 QR Code", done: false },
     { id: "c9", text: "日本網卡 / eSIM / 漫遊開通 & 行動電源隨身攜帶", done: false }
@@ -685,7 +644,7 @@ function toggleItemDone(dayNum, itemId) {
   if (!dayObj) return;
 
   if (dayObj.hasOptions) {
-    const key = dayObj.optionKey || "day7Option";
+    const key = dayObj.optionKey || "day8Option";
     const currentOpt = state[key] || "A";
     const list = dayObj.optionsData[currentOpt] || [];
     const item = list.find((i) => i.id === itemId);
@@ -764,7 +723,7 @@ function saveNewEvent() {
   };
 
   if (dayObj.hasOptions) {
-    const key = dayObj.optionKey || "day7Option";
+    const key = dayObj.optionKey || "day8Option";
     const currentOpt = state[key] || "A";
     dayObj.optionsData[currentOpt].push(newItem);
   } else {
@@ -800,16 +759,16 @@ function renderItineraryView() {
       ? "transport-icoca"
       : "transport-bus";
 
-  const optKey = d.optionKey || "day7Option";
+  const optKey = d.optionKey || "day8Option";
   const currentOpt = state[optKey] || "A";
   const currentItems = d.hasOptions ? d.optionsData[currentOpt] : d.items;
 
   const optTitle =
-    d.optionTitle || "🔀 Day 7 二擇一彈性方案切換（點擊切換當日行程）：";
+    d.optionTitle || "🔀 二擇一彈性方案切換（點擊切換當日行程）：";
   const labelA =
-    (d.optionLabels && d.optionLabels.A) || "🦈 選項 A：大阪海遊館＋摩天輪";
+    (d.optionLabels && d.optionLabels.A) || "選項 A";
   const labelB =
-    (d.optionLabels && d.optionLabels.B) || "🧗 選項 B：Kids Plaza 兒童樂園";
+    (d.optionLabels && d.optionLabels.B) || "選項 B";
 
   const optionSwitcherHtml = d.hasOptions
     ? `
@@ -904,7 +863,7 @@ function renderItineraryView() {
       <textarea
         class="notes-textarea"
         placeholder="輸入訂位代號、乘車班次、或是注意事項..."
-         oninput="updateDayNote(${d.day}, this.value)"
+        oninput="updateDayNote(${d.day}, this.value)"
       >${d.notes || ""}</textarea>
     </div>
   `;
@@ -915,7 +874,7 @@ function renderPassView() {
     <div class="section-card">
       <h3>🎫 9天8夜 交通票券作戰總覽</h3>
       <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0;">
-        本行程完美切齊 <strong>JR 關西廣域周遊券 (5日券)</strong> 於 <strong>Day 2 (6/27) ～ Day 6 (7/1)</strong> 連續使用，涵蓋倉敷、四國、岡山➔新大阪新幹線、USJ 與神戶！
+        配合新增廣島・宮島一日遊，本行程使用超划算的 <strong>「JR 關西&廣島地區周遊券 (5日券)」</strong>，於 <strong>Day 2 (6/27) ～ Day 6 (7/1)</strong> 連續使用，一張票包辦<strong>岡山⇄廣島新幹線、JR宮島渡輪、倉敷、岡山➔新大阪新幹線與 USJ</strong>！
       </p>
       <div class="pass-timeline-bar">
         <div class="pass-cell bus">D1<br>6/26<br>巴士</div>
@@ -931,22 +890,22 @@ function renderPassView() {
     </div>
 
     <div class="section-card">
-      <h3>🟢 Day 2 ~ Day 6：JR 關西廣域周遊券 (5日)</h3>
+      <h3>🟢 Day 2 ~ Day 6：JR 關西&廣島地區周遊券 (5日)</h3>
       <ul style="font-size:0.86rem;padding-left:18px;margin:0;line-height:1.7;">
-        <li><strong>啟用日：</strong>6/27 (Day 2) 岡山 ⇄ 倉敷</li>
-        <li><strong>四國段注意 (Day 3)：</strong>周遊券涵蓋至「宇多津站 / 高松站」。前往<strong>琴平站</strong>的區間（宇多津 ⇄ 琴平）屬於 JR 四國範圍，且<strong>「麵包超人小火車 1號」為全車綠色車廂指定席</strong>，需另外加購該段乘車券＋綠色車廂指定席券！</li>
-        <li><strong>新幹線跨城 (Day 4)：</strong>岡山 ➔ 新大阪 可搭乘山陽新幹線（含 Nozomi、Mizuho、Sakura、Hikari）。若有大型行李請事先預約「特大行李放置處附帶席」。</li>
-        <li><strong>大阪環球影城 (Day 5)：</strong>新今宮 ➔ 西九條 ➔ 環球城站 全程為 JR 路線，直接刷周遊券進站。</li>
-        <li><strong>神戶一日遊 (Day 6)：</strong>新今宮 ➔ 大阪 ➔ JR 三ノ宮 / 神戶站 使用周遊券；三宮往返「神戶動物王國」的 Port Liner 為私鐵，現場買套票或刷 ICOCA。</li>
+        <li><strong>Day 2 四國週日限定小火車 (6/27)：</strong>周遊券涵蓋「岡山 ⇄ 兒島」。兒島至琴平/宇多津屬 JR 四國區間，且<strong>「麵包超人小火車 1號」為全車綠色車廂指定席</strong>，需另外加購四國段乘車券＋綠色車廂指定席券！</li>
+        <li><strong>Day 3 倉敷一日遊 (6/28)：</strong>岡山 ⇄ 倉敷 JR 山陽本線直接刷周遊券進站。</li>
+        <li><strong>Day 4 廣島・宮島一日遊 (6/29)：</strong>全行程回本王牌！<strong>岡山 ⇄ 廣島 山陽新幹線 (Nozomi/Sakura/Mizuho)、廣島 ⇄ 宮島口 JR、JR 西日本宮島渡輪、以及廣島觀光循環巴士 Meipuru-pu 全部免費包含在周遊券內</strong>！（登島僅需投 ¥100 宮島訪問稅）。</li>
+        <li><strong>Day 5 新幹線跨城大阪 (6/30)：</strong>岡山 ➔ 新大阪 搭乘山陽新幹線，再轉 JR 至新今宮與梅田。若有特大行李記得事先劃位「特大行李放置處附帶席」。</li>
+        <li><strong>Day 6 大阪環球影城 (7/1)：</strong>新今宮 ➔ 西九條 ➔ 環球城站 全程為 JR 路線，直接刷周遊券進站（第 5 天到期日）。</li>
       </ul>
     </div>
 
     <div class="section-card">
       <h3>🟣 Day 7 ~ Day 9：ICOCA 與關西機場交通</h3>
       <ul style="font-size:0.86rem;padding-left:18px;margin:0;line-height:1.7;">
-        <li><strong>Day 7 (大阪市區)：</strong>刷 ICOCA 搭乘 Osaka Metro 地鐵（選項 A：大阪港海遊館 ➔ 中央線直達森之宮站「大阪城公園溜滑梯/餐廳」 ➔ 長堀鶴見綠地線直達「心齋橋/道頓堀」；選項 B：堺筋線直達扇町站 Kids Plaza）。</li>
-        <li><strong>Day 8 (京都鐵道博物館＋鴨川＋晚餐二擇一)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；傍晚若選<strong>「選項 A：阿倍野 Q's Mall」</strong>可搭京阪或 JR 至天王寺站（距新今宮僅 1 站）；若選<strong>「選項 B：留在京都晚餐」</strong>，可在四條河原町或京都車站吃飽買齊伴手禮後再搭車回新今宮！</li>
-        <li><strong>Day 9 (新今宮 ➔ 關西機場)：</strong>新今宮站可選擇搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>直達關西機場第一航廈。</li>
+        <li><strong>Day 7 神戶動物王國＆神戶港 (7/2)：</strong>刷 ICOCA 搭 JR 至「三ノ宮站」，在 Port Liner 三宮站購買「神戶動物王國＋電車來回優惠套票」最划算！</li>
+        <li><strong>Day 8 京都鐵道博物館＋鴨川＋晚餐二擇一 (7/3)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；傍晚可選搭車回「天王寺站（阿倍野 Q's Mall）」或留在京都吃完晚餐再搭車回新今宮。</li>
+        <li><strong>Day 9 新今宮 ➔ 關西機場 (7/4)：</strong>新今宮站可搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>一班車直達關西機場第一航廈。</li>
       </ul>
     </div>
   `;
@@ -984,9 +943,9 @@ function renderFlightHotelView() {
     </div>
 
     <div class="section-card">
-      <h3>🏨 住宿安排（共 8 晚，僅換 1 次飯店！）</h3>
+      <h3>🏨 住宿安排（岡山 4 晚 ＋ 大阪 4 晚，僅換 1 次飯店！）</h3>
       <div class="form-group">
-        <label>🍑 第一階段：6/26 ~ 6/29（3 晚）- 岡山車站周邊</label>
+        <label>🍑 第一階段：6/26 ~ 6/30（4 晚）- 岡山車站周邊</label>
         <textarea
           rows="2"
           oninput="updateHotelInfo('okayama', this.value)"
@@ -998,7 +957,7 @@ function renderFlightHotelView() {
       </div>
 
       <div class="form-group" style="margin-top:16px;">
-        <label>🐙 第二階段：6/29 ~ 7/4（5 晚）- 大阪新今宮周邊</label>
+        <label>🐙 第二階段：6/30 ~ 7/4（4 晚）- 大阪新今宮周邊</label>
         <textarea
           rows="2"
           oninput="updateHotelInfo('osaka', this.value)"
@@ -1042,7 +1001,7 @@ function renderChecklistView() {
     <div class="section-card">
       <h3>⚙️ 旅遊手冊設定</h3>
       <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0;">
-        所有打勾進度、Day 7 方案選擇、飯店備註與新增行程皆會自動儲存在您的手機瀏覽器中。
+        所有打勾進度、Day 8 方案選擇、飯店備註與新增行程皆會自動儲存在您的手機瀏覽器中。
       </p>
       <button class="btn-secondary" onclick="resetDefaultData()" style="width:100%;">
         🔄 重置所有狀態回預設行程
