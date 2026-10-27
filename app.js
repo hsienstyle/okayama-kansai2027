@@ -1,12 +1,12 @@
 // 2027 岡山進・關西出 9天8夜親子之旅 (6/26 ~ 7/4) 核心資料與互動邏輯
 // 岡山住 4 晚 (6/26~6/30) ＋ 大阪新今宮住 4 晚 (6/30~7/4)
 
-const STORAGE_KEY = "okayama_kansai_2027_v8";
+const STORAGE_KEY = "okayama_kansai_2027_v9";
 
 const defaultTripData = {
   selectedDay: 1,
   activeTab: "itinerary", // itinerary | pass | flightHotel | checklist
-  day8Option: "A", // A: 阿倍野 Q's Mall | B: 京都河原町/京都站晚餐
+  day6Option: "A", // A: 阿倍野 Q's Mall | B: 京都車站晚餐 (皆可全程用 JR 周遊券免費搭回大阪！)
   hotelNames: {
     okayama: "岡山車站周邊飯店（6/26~6/30 共 4 晚，待填寫飯店名稱與訂房代號）",
     osaka: "大阪新今宮周邊飯店（6/30~7/4 共 4 晚，待填寫飯店名稱與訂房代號）"
@@ -296,194 +296,86 @@ const defaultTripData = {
       day: 6,
       date: "7/1 (四)",
       fullDate: "2027-07-01",
-      city: "大阪 USJ",
-      title: "日本環球影城 (USJ) 狂歡一日遊（平日週四入園！）",
-      passBadge: "🎫 JR 關西&廣島周遊券 Day 5 / 5（最後一日！）",
-      passType: "jr",
-      transportSummary: "自 JR 新今宮站搭乘「大阪環狀線」於「西九條站」轉乘「JR 夢咲線（櫻島線）」至「環球城站 (Universal-City)」。",
-      hotelArea: "大阪新今宮周邊 (第 2/4 晚)",
-      notes: "排在週四入園避開週末人潮！務必事先下載「USJ 官方 App」並綁定全家人門票，入園第一時間抽「超級任天堂世界」整理券（或使用快通）！",
-      items: [
-        {
-          id: "d6-1",
-          time: "07:30",
-          category: "🚆 出發入園",
-          title: "新今宮 ➔ 西九條 ➔ 環球城站（使用 JR 周遊券最後一日）",
-          desc: "持 JR 周遊券直接進站，在西九條站同月台轉乘往櫻島方向的列車，約 20 分鐘即可抵達環球影城大門口！",
-          highlight: "🎫 全程屬於 JR 路線，直接用 JR 周遊券免費搭乘",
-          mapQuery: "Universal Studios Japan",
-          done: false
-        },
-        {
-          id: "d6-2",
-          time: "上午",
-          category: "🍄 主題園區 1",
-          title: "主攻：超級任天堂世界 (Super Nintendo World)",
-          desc: "戴上能量手環敲磚塊收集金幣、挑戰「瑪利歐賽車～庫巴的挑戰書～」、搭乘親子友善的「耀西冒險」俯瞰整個蘑菇王國，以及全新「咚奇剛國度」！",
-          highlight: "🌟 奇諾比奧咖啡廳記得掃碼預約用餐時段",
-          mapQuery: "Super Nintendo World Osaka",
-          done: false
-        },
-        {
-          id: "d6-3",
-          time: "下午",
-          category: "🪄 主題園區 2",
-          title: "主攻：哈利波特魔法世界 & 小小兵樂園 / 環球奇境",
-          desc: "走進活米村喝冰涼奶油啤酒（無酒精兒童可喝）、看霍格華茲城堡與魔杖互動魔法；下午可帶小朋友去「環球奇境 (Universal Wonderland)」或小小兵園區玩溫和設施。",
-          highlight: "🍺 奶油啤酒冰沙版在 7 月初超消暑！",
-          mapQuery: "The Wizarding World of Harry Potter Osaka",
-          done: false
-        },
-        {
-          id: "d6-4",
-          time: "晚上",
-          category: "🚆 賦歸休息",
-          title: "環球城市步行街晚餐 ➔ 返回新今宮飯店",
-          desc: "出園後在 Universal CityWalk 用餐或買消夜，趁午夜前持周遊券搭 JR 回到新今宮站好好泡澡休息。",
-          highlight: "",
-          mapQuery: "Universal CityWalk Osaka",
-          done: false
-        }
-      ]
-    },
-    {
-      day: 7,
-      date: "7/2 (五)",
-      fullDate: "2027-07-02",
-      city: "神戶",
-      title: "神戶生態互動（神戶動物王國）與神戶港浪漫夜景",
-      passBadge: "💳 ICOCA 刷卡日 ＋ Port Liner 動物王國套票",
-      passType: "icoca",
-      transportSummary: "今日起全程使用 ICOCA 刷卡！自新今宮搭 JR 至「三ノ宮站」，轉乘神戶新交通 Port Liner 至「計算科學中心站」。",
-      hotelArea: "大阪新今宮周邊 (第 3/4 晚)",
-      notes: "在三ノ宮轉乘 Port Liner 前，記得在 Port Liner 三宮站售票窗口購買「神戶動物王國＋Port Liner 來回電車優惠套票」（等於送電車車資）！",
-      items: [
-        {
-          id: "d7-1",
-          time: "09:00",
-          category: "🚆 跨城交通",
-          title: "JR 新今宮 ➔ 大阪站 ➔ JR 三ノ宮站 ➔ 計算科學中心站",
-          desc: "刷 ICOCA 搭乘 JR 新快速列車前往神戶三ノ宮站，再轉乘高架無人駕駛的 Port Liner（孩子最愛坐第一排看風景！）前往神戶動物王國。",
-          highlight: "🎫 推薦在 Port Liner 三宮站購買「動物王國門票＋電車來回套票」超划算！",
-          mapQuery: "Sannomiya Station",
-          done: false
-        },
-        {
-          id: "d7-2",
-          time: "全日",
-          category: "🦙 親子生態",
-          title: "神戶動物王國（室內無障礙・水豚零距離互動）",
-          desc: "全區幾乎為室內溫室與平坦無障礙步道，大晴天或下雨都不怕！可以親手餵食水豚、袋鼠、象龜，近距離看鯨頭鸛、兔猻，還有超震撼的飛鳥飛行秀與牧羊犬表演。",
-          highlight: "🥕 水豚互動區超熱門，記得準備零錢買飼料讓 3 小餵個過癮！",
-          mapQuery: "Kobe Animal Kingdom",
-          done: false
-        },
-        {
-          id: "d7-3",
-          time: "傍晚",
-          category: "🌃 港灣夜景",
-          title: "神戶港 (Kobe Harborland / 美利堅公園) 欣賞夜景",
-          desc: "傍晚前往神戶港邊，在 umie 商場或馬賽克廣場 (MOSAIC) 享用晚餐（旁邊還有神戶麵包超人博物館 1 樓免費商店區可逛），欣賞神戶塔、海洋博物館與摩天輪點燈夜景。",
-          highlight: "🚢 海風徐徐、步道寬敞，拍全家福夜景絕佳地點",
-          mapQuery: "Kobe Harborland umie",
-          done: false
-        },
-        {
-          id: "d7-4",
-          time: "晚上",
-          category: "🚆 返回大阪",
-          title: "自 JR 神戶站（或三ノ宮站）刷 ICOCA 搭 JR 返回新今宮",
-          desc: "從馬賽克廣場走地下街直通「JR 神戶站」只要約 8 分鐘（比回三宮更近！），搭 JR 新快速＋環狀線返回大阪新今宮。",
-          highlight: "",
-          mapQuery: "JR Kobe Station",
-          done: false
-        }
-      ]
-    },
-    {
-      day: 8,
-      date: "7/3 (六)",
-      fullDate: "2027-07-03",
       city: "京都 ➔ 大阪",
-      title: "京都鐵道博物館、鴨川散步 & 晚餐二擇一",
-      passBadge: "💳 ICOCA 刷卡日（JR / 京阪或阪急電車）",
-      passType: "icoca",
-      transportSummary: "去程：自新今宮搭 JR 至大阪轉京都線至「梅小路京都西站」。傍晚可選「回大阪阿倍野 Q's Mall / 心齋橋」或「留在京都吃完晚餐再回新今宮」！",
-      hotelArea: "大阪新今宮周邊 (第 4/4 晚)",
-      notes: "想體驗京都鐵道博物館的「駕駛模擬器」，記得先下載官方抽選 App 並在入館後立刻登記抽選，同時先買 SL 蒸汽火車乘車券！傍晚可視孩子體力在下方切換「阿倍野 Q's Mall」或「京都晚餐」。",
+      title: "京都鐵道博物館、鴨川散步 & 晚餐二擇一（周遊券省最多！）",
+      passBadge: "🎫 JR 關西&廣島周遊券 Day 5 / 5（最後一日・搭京都最划算！）",
+      passType: "jr",
+      transportSummary: "發揮周遊券最大價值！自新今宮/天王寺搭 JR（可免費搭 HARUKA 特急或新快速！）至「京都站」，轉 JR 嵯峨野線 1 站至「梅小路京都西站」。回程亦持 JR 周遊券免費返回天王寺（阿倍野）或新今宮！",
+      hotelArea: "大阪新今宮周邊 (第 2/4 晚)",
+      notes: "把京都排在 Day 6（週四平日＋周遊券最後一天），不但每人現省 ¥1,900～¥3,500 長途車資（還能從天王寺免費搭 HARUKA 關空特急直達京都站！），平日去京都鐵道博物館排模擬器也更容易抽中！",
       hasOptions: true,
-      optionKey: "day8Option",
-      optionTitle: "🔀 Day 8 傍晚晚餐＆採買方案切換（依當天體力二擇一）：",
+      optionKey: "day6Option",
+      optionTitle: "🔀 Day 6 傍晚晚餐＆採買方案切換（回程皆用 JR 周遊券免費搭）：",
       optionLabels: {
-        A: "🛍️ 選項 A：阿倍野 Q's Mall 親子採買晚餐",
-        B: "🍵 選項 B：留在京都吃晚餐＋伴手禮"
+        A: "🛍️ 選項 A：搭 JR 回阿倍野 Q's Mall 採買晚餐",
+        B: "🍵 選項 B：在京都車站吃完晚餐再搭 JR 回大阪"
       },
       optionsData: {
         A: [
           {
-            id: "d8-a1",
+            id: "d6-a1",
             time: "08:30",
-            category: "🚆 鐵道出發",
-            title: "JR 新今宮 ➔ 大阪 ➔ 京都 ➔ 梅小路京都西站",
-            desc: "全程刷 ICOCA 搭乘 JR 前往京都。在京都站轉搭嵯峨野線（32/33號月台）只要 1 站（約 3 分鐘）就到梅小路京都西站，出站過馬路就是博物館大門！",
-            highlight: "💳 刷 ICOCA 免買票，轉乘順暢",
+            category: "🚆 JR 周遊券出發",
+            title: "JR 新今宮 / 天王寺 ➔ 京都站 ➔ 梅小路京都西站（周遊券免費！）",
+            desc: "持 JR 周遊券最後一天免費搭乘！可從新今宮搭至天王寺轉「HARUKA 特急」直達京都站，或從新今宮搭環狀線至大阪站轉「JR 京都線新快速」至京都站，再轉搭嵯峨野線 1 站（3分鐘）即達梅小路京都西站！",
+            highlight: "🎫 用 JR 周遊券搭長途京都線（甚至可搭 HARUKA 特急），把票券價值榨到最高！",
             mapQuery: "Umekoji-Kyotonishi Station",
             done: false
           },
           {
-            id: "d8-a2",
+            id: "d6-a2",
             time: "上午～中午",
-            category: "🚂 鐵道聖地",
-            title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、模擬器",
-            desc: "鐵道迷終極聖地！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，還能在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
-            highlight: "🚂 SL 蒸汽火車每班次固定，進館建議先到本館後方月台購票",
+            category: "🚂 鐵道聖地（平日人少！）",
+            title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、駕駛模擬器",
+            desc: "週四平日入館避開週末人潮！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，中午在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
+            highlight: "🚂 平日抽中「駕駛模擬器」機率大增！進館記得先用官方 App 登記抽選並購買 SL 蒸汽火車券",
             mapQuery: "Kyoto Railway Museum",
             done: false
           },
           {
-            id: "d8-a3",
+            id: "d6-a3",
             time: "下午",
             category: "🐢 河岸散策",
             title: "京都鴨川散步 & 跳烏龜石（三條～四條河原町 / 鴨川三角洲）",
             desc: "從梅小路搭公車或計程車前往鴨川河畔！沿著清澈河岸散步、帶 3 小踩水跳烏龜石（飛び石）、看水鳥與河岸風光，順便喝杯京都咖啡或抹茶下午茶。",
-            highlight: "🚇 逛完可從鴨川旁搭「京阪電車（祇園四條/三條 ➔ 京橋）」轉 JR 環狀線直達天王寺站（阿倍野）！",
+            highlight: "🐢 建議帶條小毛巾讓孩子在鴨川跳烏龜踩水清涼一下",
             mapQuery: "Kamogawa River Kyoto",
             done: false
           },
           {
-            id: "d8-a4",
+            id: "d6-a4",
             time: "傍晚～晚上",
             category: "🛍️ 選項 A：大阪阿倍野商圈",
-            title: "阿倍野 Q's Mall 晚餐與最後採買（天王寺站・距新今宮僅 1 站）",
-            desc: "返回大阪天王寺站直通「阿倍野 Q's Mall」！這裡空間寬敞現代、推車與親子極度友善，有超好買的「阿卡將本鋪 (Akachan)」、大型超市 Ito Yokado（買水果零食伴手禮超便宜）、Uniqlo、Bic Camera 與 3F/4F 豐富親子餐廳美食街。吃飽散步或搭 1 站就回新今宮飯店！",
-            highlight: "👶 大阪最強親子購物中心！若想看夜景還可順遊隔壁棟「阿倍野 Harukas 300 展望台」",
+            title: "持 JR 周遊券免費返回「天王寺站」：阿倍野 Q's Mall 晚餐與採買",
+            desc: "回京都站持 JR 周遊券免費搭 HARUKA 特急或新快速返回「天王寺站」直通「阿倍野 Q's Mall」！這裡有超好買的「阿卡將本鋪 (Akachan)」、大型超市 Ito Yokado、Uniqlo、Bic Camera 與 3F/4F 豐富親子餐廳美食街。吃飽搭 JR 1 站（或散步）就回新今宮飯店！",
+            highlight: "👶 全程 JR 免費搭回天王寺！亦可順遊隔壁棟「阿倍野 Harukas 300 展望台」看夜景",
             mapQuery: "Abeno Q's Mall",
             done: false
           }
         ],
         B: [
           {
-            id: "d8-b1",
+            id: "d6-b1",
             time: "08:30",
-            category: "🚆 鐵道出發",
-            title: "JR 新今宮 ➔ 大阪 ➔ 京都 ➔ 梅小路京都西站",
-            desc: "全程刷 ICOCA 搭乘 JR 前往京都。在京都站轉搭嵯峨野線（32/33號月台）只要 1 站（約 3 分鐘）就到梅小路京都西站，出站過馬路就是博物館大門！",
-            highlight: "💳 刷 ICOCA 免買票，轉乘順暢",
+            category: "🚆 JR 周遊券出發",
+            title: "JR 新今宮 / 天王寺 ➔ 京都站 ➔ 梅小路京都西站（周遊券免費！）",
+            desc: "持 JR 周遊券最後一天免費搭乘！可從天王寺搭「HARUKA 特急」或從大阪站搭「JR 京都線新快速」至京都站，再轉搭嵯峨野線 1 站（3分鐘）即達梅小路京都西站！",
+            highlight: "🎫 用 JR 周遊券搭長途京都線（甚至可搭 HARUKA 特急），把票券價值榨到最高！",
             mapQuery: "Umekoji-Kyotonishi Station",
             done: false
           },
           {
-            id: "d8-b2",
+            id: "d6-b2",
             time: "上午～中午",
-            category: "🚂 鐵道聖地",
-            title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、模擬器",
-            desc: "鐵道迷終極聖地！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，還能在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
-            highlight: "🚂 SL 蒸汽火車每班次固定，進館建議先到本館後方月台購票",
+            category: "🚂 鐵道聖地（平日人少！）",
+            title: "京都鐵道博物館：扇形車庫、實體 SL 蒸汽火車、駕駛模擬器",
+            desc: "週四平日入館避開週末人潮！參觀壯觀的木造「扇形車庫」與轉車台、實際搭乘冒著白煙與汽笛聲的「SL Steam 號」蒸汽火車、體驗新幹線/在來線駕駛模擬器，中午在 2F 景觀餐廳邊看窗外新幹線與 HARUKA 呼嘯而過邊吃火車便當！",
+            highlight: "🚂 平日抽中「駕駛模擬器」機率大增！進館記得先用官方 App 登記抽選並購買 SL 蒸汽火車券",
             mapQuery: "Kyoto Railway Museum",
             done: false
           },
           {
-            id: "d8-b3",
+            id: "d6-b3",
             time: "下午",
             category: "🐢 河岸散策",
             title: "京都鴨川散步 & 跳烏龜石（三條～四條河原町 / 鴨川三角洲）",
@@ -493,17 +385,125 @@ const defaultTripData = {
             done: false
           },
           {
-            id: "d8-b4",
+            id: "d6-b4",
             time: "傍晚～晚上",
             category: "🍵 選項 B：京都美食與伴手禮",
-            title: "京都晚餐（四條河原町商圈 或 京都車站伊勢丹/Porta）➔ 搭車返新今宮",
-            desc: "直接在四條河原町百貨餐廳街（高島屋 S.C. 有任天堂京都店！）或回到京都車站（拉麵小路、名代豬排、壽喜燒、中村藤吉抹茶）悠閒享用晚餐，一次買齊京都限定伴手禮（Malebranche 茶之菓、生八橋等），吃飽後再搭車返回新今宮飯店打包行李！",
-            highlight: "🚆 從河原町搭「阪急直通堺筋線」或從京都站搭「JR 新快速」都能輕鬆回新今宮",
+            title: "京都晚餐（京都車站伊勢丹 / Porta / 四條河原町）➔ 持 JR 周遊券免費返新今宮",
+            desc: "回到京都車站（拉麵小路、名代豬排、壽喜燒、中村藤吉抹茶）或四條河原町悠閒享用晚餐，一次買齊京都限定伴手禮（Malebranche 茶之菓、生八橋等），吃飽後持 JR 周遊券從京都站免費搭 HARUKA 或新快速返回新今宮飯店！",
+            highlight: "🎫 回程從京都車站搭 JR 回大阪新今宮完全免費（記得在午夜前出站）！",
             mapQuery: "Kyoto Station",
             done: false
           }
         ]
       }
+    },
+    {
+      day: 7,
+      date: "7/2 (五)",
+      fullDate: "2027-07-02",
+      city: "大阪 USJ",
+      title: "日本環球影城 (USJ) 狂歡一日遊（週五入園・車資超便宜！）",
+      passBadge: "💳 ICOCA 刷卡日（新今宮⇄USJ 單程僅 ¥190！）",
+      passType: "icoca",
+      transportSummary: "今日起使用 ICOCA 刷卡！自 JR 新今宮站搭「大阪環狀線」於「西九條站」轉乘「JR 夢咲線」至「環球城站」，單程車資僅 ¥190（兒童 ¥90），移出周遊券最划算！",
+      hotelArea: "大阪新今宮周邊 (第 3/4 晚)",
+      notes: "把 USJ 排在 Day 7 (週五)，不僅避開週六日大爆滿人潮，而且新今宮往返環球城站來回車資只要 ¥380，完全不浪費貴桑桑的 JR 周遊券！",
+      items: [
+        {
+          id: "d7-1",
+          time: "07:30",
+          category: "🚆 出發入園",
+          title: "新今宮 ➔ 西九條 ➔ 環球城站（刷 ICOCA 單程僅 ¥190）",
+          desc: "刷 ICOCA 直接進站，在西九條站同月台轉乘往櫻島方向的列車，約 20 分鐘即可抵達環球影城大門口！",
+          highlight: "💳 新今宮到環球城站來回才 ¥380，刷 ICOCA 便宜又快速！",
+          mapQuery: "Universal Studios Japan",
+          done: false
+        },
+        {
+          id: "d7-2",
+          time: "上午",
+          category: "🍄 主題園區 1",
+          title: "主攻：超級任天堂世界 (Super Nintendo World)",
+          desc: "戴上能量手環敲磚塊收集金幣、挑戰「瑪利歐賽車～庫巴的挑戰書～」、搭乘親子友善的「耀西冒險」俯瞰整個蘑菇王國，以及全新「咚奇剛國度」！",
+          highlight: "🌟 奇諾比奧咖啡廳記得掃碼預約用餐時段",
+          mapQuery: "Super Nintendo World Osaka",
+          done: false
+        },
+        {
+          id: "d7-3",
+          time: "下午",
+          category: "🪄 主題園區 2",
+          title: "主攻：哈利波特魔法世界 & 小小兵樂園 / 環球奇境",
+          desc: "走進活米村喝冰涼奶油啤酒（無酒精兒童可喝）、看霍格華茲城堡與魔杖互動魔法；下午可帶小朋友去「環球奇境 (Universal Wonderland)」或小小兵園區玩溫和設施。",
+          highlight: "🍺 奶油啤酒冰沙版在 7 月初超消暑！",
+          mapQuery: "The Wizarding World of Harry Potter Osaka",
+          done: false
+        },
+        {
+          id: "d7-4",
+          time: "晚上",
+          category: "🚆 賦歸休息",
+          title: "環球城市步行街晚餐 ➔ 刷 ICOCA 返回新今宮飯店",
+          desc: "出園後在 Universal CityWalk 用餐或買消夜，搭 JR 回到新今宮站好好泡澡休息。",
+          highlight: "",
+          mapQuery: "Universal CityWalk Osaka",
+          done: false
+        }
+      ]
+    },
+    {
+      day: 8,
+      date: "7/3 (六)",
+      fullDate: "2027-07-03",
+      city: "神戶 ➔ 大阪",
+      title: "神戶生態互動（神戶動物王國）與週末神戶港百萬夜景",
+      passBadge: "💳 ICOCA 刷卡日 ＋ Port Liner 動物王國套票",
+      passType: "icoca",
+      transportSummary: "自新今宮刷 ICOCA 搭 JR 至「三ノ宮站」（或從難波搭阪神電車直達三宮更便宜！），轉乘神戶新交通 Port Liner 至「計算科學中心站」。",
+      hotelArea: "大阪新今宮周邊 (第 4/4 晚)",
+      notes: "在三ノ宮轉乘 Port Liner 前，記得在 Port Liner 三宮站售票窗口購買「神戶動物王國＋Port Liner 來回電車優惠套票」（等於送電車車資）！週六晚上的神戶港點燈與熱鬧市集氣氛超棒！",
+      items: [
+        {
+          id: "d8-1",
+          time: "09:00",
+          category: "🚆 跨城交通",
+          title: "新今宮 ➔ 大阪站 ➔ JR 三ノ宮站 ➔ 計算科學中心站",
+          desc: "刷 ICOCA 搭乘 JR 新快速列車前往神戶三ノ宮站，再轉乘高架無人駕駛的 Port Liner（孩子最愛坐第一排車頭看風景！）前往神戶動物王國。",
+          highlight: "🎫 務必在 Port Liner 三宮站購買「動物王國門票＋Port Liner 來回套票」，直接省下 ¥580 電車費！",
+          mapQuery: "Sannomiya Station",
+          done: false
+        },
+        {
+          id: "d8-2",
+          time: "上午～下午",
+          category: "🦙 親子生態",
+          title: "神戶動物王國（室內無障礙・水豚零距離互動）",
+          desc: "全區幾乎為室內溫室與平坦無障礙步道，大晴天或下雨都不怕！可以親手餵食水豚、袋鼠、象龜，近距離看鯨頭鸛、兔猻，還有超震撼的飛鳥飛行秀與牧羊犬表演。",
+          highlight: "🥕 水豚互動區超熱門，記得準備零錢買飼料讓 3 小餵個過癮！",
+          mapQuery: "Kobe Animal Kingdom",
+          done: false
+        },
+        {
+          id: "d8-3",
+          time: "傍晚～晚上",
+          category: "🌃 週末港灣夜景＆採買",
+          title: "神戶港 (Kobe Harborland / umie / MOSAIC) 晚餐與百萬夜景",
+          desc: "傍晚前往神戶港邊，在 umie 大型商場（有超好逛的百貨、玩具與美食）或馬賽克廣場 (MOSAIC) 享用晚餐、逛神戶麵包超人博物館 1F 免費商店區，欣賞週六夜晚浪漫的神戶塔、海洋博物館與摩天輪點燈夜景！",
+          highlight: "🚢 umie 商場與馬賽克廣場非常好逛好買，也能在這裡把最後伴手禮（神戶布丁、風月堂法蘭酥）買齊！",
+          mapQuery: "Kobe Harborland umie",
+          done: false
+        },
+        {
+          id: "d8-4",
+          time: "晚上",
+          category: "🚆 返回大阪",
+          title: "自 JR 神戶站（或三ノ宮站）刷 ICOCA 搭 JR 返回新今宮",
+          desc: "從馬賽克廣場走地下街直通「JR 神戶站」只要約 8 分鐘（比回三宮更近！），搭 JR 新快速＋環狀線返回大阪新今宮打包行李。",
+          highlight: "🛒 若回新今宮後還想補貨，新今宮站旁就有 MEGA 唐吉訶德新世界店（開到凌晨）！",
+          mapQuery: "JR Kobe Station",
+          done: false
+        }
+      ]
     },
     {
       day: 9,
@@ -556,7 +556,7 @@ const defaultTripData = {
     { id: "c3", text: "購買「JR 關西&廣島地區周遊券 5日券」(6/27~7/1 連續使用，含廣島新幹線與宮島渡輪)", done: false },
     { id: "c4", text: "預訂 6/27 (週日)「瀨戶大橋麵包超人小火車 1號 (11:17)」綠色車廂指定席券", done: false },
     { id: "c5", text: "預約 6/27「中野烏龍麵學校（琴平校）」(3小體驗＋2大陪同)", done: false },
-    { id: "c6", text: "購買 7/1 (週四)「日本環球影城 USJ」門票 & 下載官方 App 綁定", done: false },
+    { id: "c6", text: "購買 7/2 (週五)「日本環球影城 USJ」門票 & 下載官方 App 綁定", done: false },
     { id: "c7", text: "準備全員 ICOCA 卡（含兒童 ICOCA，Day 7~9 使用）", done: false },
     { id: "c8", text: "出發前填寫 Visit Japan Web (VJW) 入境與海關申報 QR Code", done: false },
     { id: "c9", text: "日本網卡 / eSIM / 漫遊開通 & 行動電源隨身攜帶", done: false }
@@ -876,6 +876,9 @@ function renderPassView() {
       <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0;">
         配合新增廣島・宮島一日遊，本行程使用超划算的 <strong>「JR 關西&廣島地區周遊券 (5日券)」</strong>，於 <strong>Day 2 (6/27) ～ Day 6 (7/1)</strong> 連續使用，一張票包辦<strong>岡山⇄廣島新幹線、JR宮島渡輪、倉敷、岡山➔新大阪新幹線與 USJ</strong>！
       </p>
+        <div class="pass-cell" style="background:var(--primary-light);color:var(--primary-dark);border-radius:8px;padding:6px;margin-bottom:10px;font-size:0.82rem;font-weight:700;">
+          💡 省錢神調度：把車資最貴的「京都一日遊 (來回 ¥1,900~¥3,500)」排在 Day 6 周遊券最後一日；車資最便宜的「USJ (來回僅 ¥380)」移到 Day 7 刷 ICOCA！
+        </div>
       <div class="pass-timeline-bar">
         <div class="pass-cell bus">D1<br>6/26<br>巴士</div>
         <div class="pass-cell jr">D2<br>6/27<br>JR 1</div>
@@ -896,16 +899,16 @@ function renderPassView() {
         <li><strong>Day 3 倉敷一日遊 (6/28)：</strong>岡山 ⇄ 倉敷 JR 山陽本線直接刷周遊券進站。</li>
         <li><strong>Day 4 廣島・宮島一日遊 (6/29)：</strong>全行程回本王牌！<strong>岡山 ⇄ 廣島 山陽新幹線 (Nozomi/Sakura/Mizuho)、廣島 ⇄ 宮島口 JR、JR 西日本宮島渡輪、以及廣島觀光循環巴士 Meipuru-pu 全部免費包含在周遊券內</strong>！（登島僅需投 ¥100 宮島訪問稅）。</li>
         <li><strong>Day 5 新幹線跨城大阪 (6/30)：</strong>岡山 ➔ 新大阪 搭乘山陽新幹線，再轉 JR 至新今宮與梅田。若有特大行李記得事先劃位「特大行李放置處附帶席」。</li>
-        <li><strong>Day 6 大阪環球影城 (7/1)：</strong>新今宮 ➔ 西九條 ➔ 環球城站 全程為 JR 路線，直接刷周遊券進站（第 5 天到期日）。</li>
+        <li><strong>Day 6 京都鐵道博物館＋鴨川 (7/1)：</strong>周遊券第 5 天到期日！自新今宮/天王寺免費搭 <strong>HARUKA 關空特急或 JR 新快速</strong>往返京都與梅小路京都西站，立省每人 ¥1,900~¥3,500 長途車資！</li>
       </ul>
     </div>
 
     <div class="section-card">
       <h3>🟣 Day 7 ~ Day 9：ICOCA 與關西機場交通</h3>
       <ul style="font-size:0.86rem;padding-left:18px;margin:0;line-height:1.7;">
-        <li><strong>Day 7 神戶動物王國＆神戶港 (7/2)：</strong>刷 ICOCA 搭 JR 至「三ノ宮站」，在 Port Liner 三宮站購買「神戶動物王國＋電車來回優惠套票」最划算！</li>
-        <li><strong>Day 8 京都鐵道博物館＋鴨川＋晚餐二擇一 (7/3)：</strong>去程刷 ICOCA 搭 JR 至「梅小路京都西站」；傍晚可選搭車回「天王寺站（阿倍野 Q's Mall）」或留在京都吃完晚餐再搭車回新今宮。</li>
-        <li><strong>Day 9 新今宮 ➔ 關西機場 (7/4)：</strong>新今宮站可搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>一班車直達關西機場第一航廈。</li>
+        <li><strong>Day 7 日本環球影城 USJ (7/2 週五)：</strong>新今宮 ➔ 西九條 ➔ 環球城站，刷 ICOCA 單程僅 ¥190（來回 ¥380）超便宜！</li>
+        <li><strong>Day 8 神戶動物王國＆神戶港 (7/3 週六)：</strong>刷 ICOCA 搭 JR 至「三ノ宮站」，在 Port Liner 三宮站購買「神戶動物王國＋電車來回優惠套票」最划算！</li>
+        <li><strong>Day 9 新今宮 ➔ 關西機場 (7/4 週日)：</strong>新今宮站可搭乘<strong>「南海電鐵（空港急行 / 特急 Rapi:t）」</strong>或<strong>「JR 關空快速 / 特急 Haruka」</strong>一班車直達關西機場第一航廈。</li>
       </ul>
     </div>
   `;
